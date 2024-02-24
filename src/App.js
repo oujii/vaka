@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 
 
 function App() {
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [setIsFullscreen] = useState(false);
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
