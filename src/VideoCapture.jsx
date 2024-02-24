@@ -10,7 +10,7 @@ const VideoRecorder = () => {
   useEffect(() => {
     const init = async () => {
       try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
         setVideoStream(stream);
 
         videoRef.current.srcObject = stream;
