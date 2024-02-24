@@ -22,10 +22,8 @@ function App() {
   return (
     <div className="container">
       <div className="column1">
-      <div className="column1-top"><img src={tallImage} alt='test'/></div>
-      <div className="column1-bottom"><button onClick={toggleFullscreen}>
-        {isFullscreen ? 'Exit Fullscreen' : 'Go Fullscreen'}  
-      </button></div>
+      <div className="column1-top"><a onClick={toggleFullscreen}><img className="stories" src={tallImage} alt='test'/></a></div>
+      <div className="column1-bottom">hej</div>
     </div>
 
     <div className='column2'>
