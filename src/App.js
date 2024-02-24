@@ -23,7 +23,7 @@ function App() {
     <div className="container">
       <div className="column1">
       <div className="column1-top"><a onClick={toggleFullscreen}><img className="stories" src={tallImage} alt='test'/></a></div>
-      <div className="column1-bottom">hej</div>
+      <div className="column1-bottom">hejsan</div>
     </div>
 
     <div className='column2'>
