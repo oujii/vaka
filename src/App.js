@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="container">
       <div className="column1">
-      <div className="column1-top"><img src={tallImage} /></div>
+      <div className="column1-top"><img src={tallImage} alt='test'/></div>
       <div className="column1-bottom">bottom 80%ss</div>
     </div>
 
