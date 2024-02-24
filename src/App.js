@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import MyDiv from './MyDiv';
 import VideoCapture from './VideoCapture';
