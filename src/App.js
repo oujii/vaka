@@ -2,6 +2,7 @@ import './App.css';
 import MyDiv from './MyDiv';
 import VideoCapture from './VideoCapture';
 import tallImage from './images/stories.png';
+import scrollImage from './images/feed_scroll.png';
 import React, { useState } from 'react';
 
 
@@ -10,11 +11,11 @@ function App() {
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
-      setIsFullscreen(true);
+
     } else {  
       if (document.exitFullscreen) {
         document.exitFullscreen(); 
-        setIsFullscreen(false);
+
       }
     }
   }
@@ -23,7 +24,7 @@ function App() {
     <div className="container">
       <div className="column1">
       <div className="column1-top"><a onClick={toggleFullscreen}><img className="stories" src={tallImage} alt='test'/></a></div>
-      <div className="column1-bottom">hejsan</div>
+      <div className="column1-bottom"><img className="scroll" src={scrollImage} alt='test'/></div>
     </div>
 
     <div className='column2'>

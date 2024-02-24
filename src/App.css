@@ -7,11 +7,11 @@
 .column1 {
   flex: 1; 
   width:50vw;
-  background: yellow;
+  background: black;
 }
 
 .column1-top {
-  height: 20%;
+
 }
 
 .column1-bottom {
@@ -27,5 +27,9 @@
 }
 
 .stories {
+  width:100%;
+}
+
+.scroll {
   width:100%;
 }
