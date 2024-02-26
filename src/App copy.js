@@ -1,8 +1,8 @@
 import './App.css';
 import MyDiv from './MyDiv';
 import VideoCapture from './VideoCapture';
-import tallImage from './images/vid.mp4';
-import rightColumn from './images/overlay.png';
+import tallImage from './images/stories.png';
+import scrollImage from './images/feed_scroll.png';
 import React, { useState } from 'react';
 
 
@@ -23,15 +23,12 @@ function App() {
   return (
     <div className="container">
       <div className="column1">
-        <video width="100%" src={tallImage} autoPlay alt="tall image"/>
-
+      <div className="column1-top"><a onClick={toggleFullscreen}><img className="stories" src={tallImage} alt='test'/></a></div>
+      <div className="column1-bottom"><img className="scroll" src={scrollImage} alt='test'/></div>
     </div>
 
     <div className='column2'>
-      <div className="video-container">
       <VideoCapture />
-      </div>
-      <img src={rightColumn} width="100%" alt="right column overlay"/>
       <MyDiv />
     </div>
   </div>

@@ -51,6 +51,9 @@ const VideoRecorder = () => {
 
   return (
     <div>
+      <button onClick={isRecording ? stopRecording : startRecording}>
+        {isRecording ? 'Stop' : 'Record'}
+      </button>
       <video id="main__video" autoPlay loop muted src={videoUrl}/>
             <video
                 ref={videoRef}

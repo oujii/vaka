@@ -20,10 +20,7 @@
 }
 
 .column2 {
-  flex: 1;
-  max-width:50vw;
-  background:red;
-  overflow:hidden;
+  position:relative;
 }
 
 .stories {
@@ -32,4 +29,25 @@
 
 .scroll {
   width:100%;
+}
+
+.video-container {
+  position: absolute; /* Position the video container */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ensure full width */
+  height: 100%; /* Ensure full height */
+  overflow: hidden; /* Hide overflow content */
+}
+
+.video-container video {
+  min-width: 100%; /* Ensure video covers entire container */
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust position to center */
+  z-index: -1; /* Send video to background */
 }
