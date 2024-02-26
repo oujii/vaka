@@ -22,11 +22,11 @@ function App() {
 
   return (
     <div className="container"><a onClick={toggleFullscreen}>
-      <div className="column1"></a>
+      <div className="column1">
         <video width="100%" src={tallImage} autoPlay alt="tall image"/>
 
     </div>
-
+</a>
     <div className='column2'>
       <div className="video-container">
       <VideoCapture />
