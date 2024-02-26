@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="container"><a onClick={toggleFullscreen}>
       <div className="column1">
-        <video width="100%" src={tallImage} autoPlay alt="tall image"/>
+        <video width="100%" src={tallImage} autoPlay loop alt="tall image"/>
 
     </div>
 </a>
