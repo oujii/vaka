@@ -24,6 +24,21 @@
   max-width:50vw;
   min-width:50vw;
   overflow:hidden;
+  
+}
+
+.linky {
+  z-index: 99999;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Cover the entire right column */
+  height: 100%;
+  background-color: transparent; /* Make the overlay transparent */
+  z-index: 999; /* Ensure it's positioned above other content */
 }
 
 
@@ -45,13 +60,22 @@
 }
 
 .video-container video {
+  
   min-width: 100%; /* Ensure video covers entire container */
   min-height: 100%;
   width: auto;
   height: auto;
   position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
+  top: 0%; /* Center vertically */
+  left: -100%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust position to center */
   z-index: -1; /* Send video to background */
+  transform: scaleX(-1); /* Flip horizontally */
+  
 }
+
+.wrapper {
+  display: flex;
+  
+}
+

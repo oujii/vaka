@@ -51,7 +51,7 @@ const VideoRecorder = () => {
 
   return (
     <div>
-      <video id="main__video" autoPlay loop muted src={videoUrl}/>
+      <video id="main__video" autoPlay loop muted src={videoUrl} />
             <video
                 ref={videoRef}
                 autoPlay
