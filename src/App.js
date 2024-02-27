@@ -51,7 +51,7 @@ function App() {
       
       <MyDiv />
     </div>
-  <div className='bottom-row'>hej</div>
+  <div className='bottom-row'></div>
     
   </div>
   </div>

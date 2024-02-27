@@ -9,6 +9,8 @@
   flex: 1; 
   width:50vw;
   background: black;
+  height:100vh;
+
 }
 
 .column1-top {
@@ -29,6 +31,7 @@
 }
 
 .linky {
+  top:70%;
   position:absolute;
   z-index: 9;
   font-size:60px;
@@ -92,4 +95,16 @@
   background-image: url("images/app-bottom-bar.png");
   background-size:cover;
   z-index: 1; /* Ensure the bottom row appears above other content */
+}
+
+
+@media (max-width: 624px) {
+  
+  .column2 {
+    display:none;
+  }
+  .column1 {
+    width:100vw;
+  }
+
 }
