@@ -1,5 +1,6 @@
 .container {
   display: flex;
+
   height:100vh;
   width:100vw;
 }
@@ -28,7 +29,9 @@
 }
 
 .linky {
-  z-index: 99999;
+  position:absolute;
+  z-index: 9;
+  font-size:60px;
 }
 
 .overlay {
@@ -67,7 +70,7 @@
   height: auto;
   position: absolute;
   top: 0%; /* Center vertically */
-  left: -100%; /* Center horizontally */
+  left: -50%; /* Center horizontally */
   transform: translate(-50%, -50%); /* Adjust position to center */
   z-index: -1; /* Send video to background */
   transform: scaleX(-1); /* Flip horizontally */
@@ -76,6 +79,17 @@
 
 .wrapper {
   display: flex;
-  
+
+
 }
 
+.bottom-row {
+  position: absolute; /* Position the bottom row absolutely */
+  bottom: 0; /* Align the bottom of the row to the bottom of the container */
+  left: 0; /* Ensure it starts from the left edge of the container */
+  width: 100vw; /* Span the entire width of the container */
+  height: 70px; /* Adjust the height as needed */
+  background-image: url("images/app-bottom-bar.png");
+  background-size:cover;
+  z-index: 1; /* Ensure the bottom row appears above other content */
+}
