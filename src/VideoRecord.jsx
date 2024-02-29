@@ -1,10 +1,32 @@
 import React, { useState, useEffect, useRef } from 'react';
+import recOverlay from './images/video-rec-overlay.png';
+import recOverlay2 from './images/video-rec-overlay2.png';
+import commentOverlay from './images/record-desc.png';
+import bottomRec from './images/bottombar-recording.png'
+import bottomRec2 from './images/bottombar-recording2.png'
+import bottomRec3 from './images/bottombar-recording3.png'
+import { useNavigate } from 'react-router-dom';
+
 
 const VideoRecorder = () => {
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isLinktoPost, setisLinktoPost] = useState(null);
+  
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+
+    } else {  
+      if (document.exitFullscreen) {
+        document.exitFullscreen(); 
+
+      }
+    }
+  }
 
 
   useEffect(() => {
@@ -48,20 +70,57 @@ const VideoRecorder = () => {
       setIsRecording(false);
     }
   };
+  const utbyt = videoUrl ? recOverlay2 : recOverlay;
+  const utbyt1 = videoUrl ? bottomRec2 : (isRecording ? bottomRec3 : bottomRec);
+  const navigate = useNavigate();
 
+  if (isLinktoPost) {
+    navigate('/videorec')
+  } 
   return (
-    <div>
-      <button onClick={isRecording ? stopRecording : startRecording}>
-        {isRecording ? 'Stop' : 'Record'}
-      </button>
-      <video id="main__video" autoPlay loop muted src={videoUrl}/>
-            <video
-                ref={videoRef}
-                autoPlay
+  <div className='video-rec-container'>
 
-            />
 
-    </div>
+        <img 
+          className="video-recorder"
+          src={utbyt}
+          width="100%"
+          alt="right column overlay"
+          style={{
+            opacity: isRecording ? 0 : 1,
+            transition: 'opacity 0.5s ease-in-out'
+          }}
+        />
+     
+      
+      
+   
+
+    
+
+    {videoUrl && (
+      <video id="recorded-video" autoPlay loop>
+        <source src={videoUrl} loop autoPlay type="video/webm" />
+        Your browser does not support the video tag.
+      </video>
+    )}
+    {!videoUrl && (
+      <video
+        ref={videoRef}
+        id="main__video-record"
+        autoPlay
+        loop
+        muted
+      />
+    )}
+    <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
+     
+    <img src={commentOverlay} width="120px" />
+
+    <input className='comment-video' placeholder="Lägg till beskrivning..."></input>
+    <img className='bottom-rec-row' onClick={isRecording ? stopRecording : (videoUrl ? isLinktoPost : startRecording)} src={utbyt1} />
+  </div>
+   
   );
 };
 
