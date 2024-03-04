@@ -7,6 +7,8 @@ import './App.css';
 import AppLayout from './AppLayout';
 import MyPageLayout from './MyPageLayout';
 import VideoRecLayout from './VideoRecLayout';
+import { motion } from 'framer-motion';
+
 
 function App() {
   
@@ -15,7 +17,12 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayout><Home /></AppLayout>} />
         <Route path="/mypage" element={<MyPageLayout><MyPage /></MyPageLayout>} />
-        <Route path="/videorec" element={<VideoRecLayout><VideoRec /></VideoRecLayout>} />
+        <Route path="/videorec" element={<motion.div
+    initial={{ x: '100%' }}
+    animate={{ x: 0 }}
+    exit={{ x: '-100%' }}
+    transition={{ duration: 0.5 }}
+      ><VideoRecLayout><VideoRec /></VideoRecLayout></motion.div>} />
       </Routes>
     </BrowserRouter>
   );

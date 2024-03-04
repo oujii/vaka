@@ -2,7 +2,7 @@
 
 import MyDiv from './MyDiv';
 import VideoCapture from './VideoCapture';
-import tallImage from './images/vid.mp4';
+import tallImage from './images/vaka_stream_chat.webm';
 import rightColumn from './images/vaka_stream_overlay.webm';
 import './App.css';
 import React, { useState } from 'react';

@@ -14,7 +14,7 @@ const VideoRecorder = () => {
   const [isRecording, setIsRecording] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isLinktoPost, setisLinktoPost] = useState(null);
+
   
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
@@ -64,6 +64,14 @@ const VideoRecorder = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    // Check if the pressed key is "Enter" or "Go"
+    if (event.key === 'Enter' || event.key === 'Go') {
+      // Unfocus the input element
+      event.target.blur();
+  
+    } };
+
   const stopRecording = () => {
     if (mediaRecorder && isRecording) {
       mediaRecorder.stop();
@@ -74,9 +82,8 @@ const VideoRecorder = () => {
   const utbyt1 = videoUrl ? bottomRec2 : (isRecording ? bottomRec3 : bottomRec);
   const navigate = useNavigate();
 
-  if (isLinktoPost) {
-    navigate('/videorec')
-  } 
+  const isLinktoPost = () => {
+    navigate('/videorec', { state: { videoUrl } });  } 
   return (
   <div className='video-rec-container'>
 
@@ -116,8 +123,8 @@ const VideoRecorder = () => {
     <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
      
     <img src={commentOverlay} width="120px" />
-
-    <input className='comment-video' placeholder="Lägg till beskrivning..."></input>
+      <div className='comment-container'>
+    <textarea className='comment-video'  onKeyDown={handleKeyPress} placeholder="Lägg till beskrivning..."></textarea></div>
     <img className='bottom-rec-row' onClick={isRecording ? stopRecording : (videoUrl ? isLinktoPost : startRecording)} src={utbyt1} />
   </div>
    
