@@ -126,9 +126,8 @@
 
 }
 #recorded-video {
-  
- 
-  margin-left: -20%;
+
+  margin-left: -19%;
    transform: scaleX(-1); /* Flip horizontally */
  
  }
