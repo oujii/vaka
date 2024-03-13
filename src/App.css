@@ -190,7 +190,7 @@
 
 .comment-video:focus {
   outline:none;
-  bottom:130px;
+  bottom:160px;
   z-index:900;
   padding:10px;
   margin-left:0px;
@@ -212,3 +212,10 @@
   flex: 1;
 }
 
+
+.link-style {
+  /* Apply your custom styles here */
+  color: inherit; /* Use the default text color */
+  text-decoration: none; /* Remove underline */
+  cursor: pointer; /* Change cursor to indicate it's clickable */
+}

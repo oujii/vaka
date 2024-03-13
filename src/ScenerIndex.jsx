@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 
 const ScenerIndex = ({ children }) => {
     const [isFullscreen, setIsFullscreen] = useState(false);
@@ -31,18 +33,20 @@ const ScenerIndex = ({ children }) => {
 
     return (
         <div style={{ backgroundColor: 'green', display: 'flex', height:'100vh', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-            <a href="/selfie" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 124</a> 
-            <a href="/backphoto" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 130</a> 
-            <a href="/camura" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 131</a>
-            <a href="/selfie" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 132</a>
-            <a onClick={openFigmaLink} style={{ fontSize: '2rem', margin: '1rem' }}>Scen 208</a>
-            <a href="/camura" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 236</a>
-            <a href="/selfie" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 315</a>
-            <a href="/livestream" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 420 (uppfälld)</a>
-            <a href="/livestream" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 508 (uppfälld)</a>
-            <a href="#" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 508 del 2 (ihopfälld)</a>
-            <a href="/back" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 609?</a>
-            
+       <>
+  <Link to="/selfie" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 124</Link>
+  <Link to="/backphoto" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 130</Link>
+  <Link to="/camura" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 131</Link>
+  <Link to="/selfie" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 132</Link>
+  <a onClick={openFigmaLink} style={{ fontSize: '2rem', margin: '1rem' }}>Scen 208</a>
+
+  <Link to="/camura" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 236</Link>
+  <Link to="/selfie" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 315</Link>
+  <Link to="/livestream" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 420 (uppfälld)</Link>
+  <Link to="/livestream" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 508 (uppfälld)</Link>
+  <Link to="#" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 508 del 2 (ihopfälld)</Link>
+  <Link to="/back" style={{ fontSize: '2rem', margin: '1rem' }}>Scen 609?</Link>
+</>
         </div>
     );
 }

@@ -7,6 +7,7 @@ import bottomRec2 from './images/bottombar-recording2.png'
 import bottomRec3 from './images/bottombar-recording3.png'
 import { useNavigate } from 'react-router-dom';
 
+
 const VideoRecorder = ({ facing, zoomy }) => {
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);

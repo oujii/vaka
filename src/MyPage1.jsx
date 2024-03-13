@@ -9,7 +9,7 @@ return (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
         >
-            <VideoRecord facing="front" zoomy="1"/> // facing är front eller environment
+            <VideoRecord facing="front" zoomy="1"/> 
         </motion.div>
 )
 }

@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Routes, Link, useHistory } from 'react-router-dom';
 import MyPage from './MyPage';
@@ -6,8 +5,8 @@ import MyPage1 from './MyPage1';
 import BackPhoto from './BackPhoto';
 import VideoCaptureSelfie from './VideoCaptureSelfie';
 import VideoRec from './VideoRec';
-import './App.css';
 import AppLayout from './AppLayout';
+import './App.css';
 import AppLayoutHome from './AppLayoutHome';
 import Camura from './Camura';
 import PinchToZoom from './PinchToZoom';

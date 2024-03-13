@@ -9,6 +9,7 @@ import './App.css';
 import React, { useState } from 'react';
 import pic1 from './images/profilepic.png';
 import pic1entry from './images/entry.png';
+import { Link } from 'react-router-dom';
 
 
 const AppLayout = ({ children }) => {
@@ -47,7 +48,7 @@ const AppLayout = ({ children }) => {
 
 
  <FeedEntry userpic={pic1} username="ouji" entryText="mitt inlägg adsd asd a ds dsdsddd dd" timestamp="4 min" entry={pic1entry} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
- <FeedEntry userpic={pic1} username="ouji" entryText="mitt inlägg" timestamp="4 min" entry={pic1entry} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
+ <FeedEntry userpic={pic1} username="ouji" entryText={<Link to="/scener" className="link-style">mitt inlägg</Link>} timestamp="4 min" entry={pic1entry} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
  <FeedEntry userpic={pic1} username="mufflan" entryText="mitt inlägg" timestamp="4 min" entry={pic1entry} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
 
       </div>

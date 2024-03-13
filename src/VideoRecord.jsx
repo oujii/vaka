@@ -141,7 +141,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
     )}
     <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
      
-    <img src={commentOverlay} width="120px" />
+    <img src={commentOverlay} width="100%" />
       <div className='comment-container'>
     <textarea className='comment-video'  onKeyDown={handleKeyPress} placeholder="Lägg till beskrivning..."></textarea></div>
     <img className='bottom-rec-row' onClick={isRecording ? stopRecording : (videoUrl ? isLinktoPost : startRecording)} src={utbyt1} />
