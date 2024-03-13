@@ -6,16 +6,18 @@ import bottomRec from './images/bottombar-recording.png'
 import bottomRec2 from './images/bottombar-recording2.png'
 import bottomRec3 from './images/bottombar-recording3.png'
 import { useNavigate } from 'react-router-dom';
+import ZoomVideo from './TextEditor'; 
 
 
-const VideoRecorder = () => {
+const VideoRecorder = ({ facing, zoomy }) => {
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(2); // Initial zoom level
 
-  
+
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -29,19 +31,24 @@ const VideoRecorder = () => {
   }
 
 
-  useEffect(() => {
-    const init = async () => {
-      try {
-        const stream = await navigator.mediaDevices.getUserMedia({ audio: false, video: true });
-        setVideoStream(stream);
+  const init = async (facingDirection, zoomy) => {
+    try {
+      const constraints = {
+        audio: false,
+        video: { facingMode: facingDirection, zoom: zoomy }
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      setVideoStream(stream);
+      videoRef.current.srcObject = stream;
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
-        videoRef.current.srcObject = stream;
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    init();
-  }, []);
+  useEffect(() => {
+    init(facing, zoomy);
+  }, [facing, zoomy]);
+
 
   const videoRef = useRef(null); 
 
@@ -64,6 +71,16 @@ const VideoRecorder = () => {
     }
   };
 
+
+  const handleZoomTap = () => {
+    const newZoom = 10; // Define the new zoom level
+    setZoomLevel(newZoom);
+  };
+
+
+
+
+  
   const handleKeyPress = (event) => {
     // Check if the pressed key is "Enter" or "Go"
     if (event.key === 'Enter' || event.key === 'Go') {
@@ -106,7 +123,7 @@ const VideoRecorder = () => {
     
 
     {videoUrl && (
-      <video id="recorded-video" autoPlay loop>
+      <video className={`${facing === 'front' ? 'front-camera-style' : ''}`} id="recorded-video" autoPlay loop>
         <source src={videoUrl} loop autoPlay type="video/webm" />
         Your browser does not support the video tag.
       </video>
@@ -115,7 +132,9 @@ const VideoRecorder = () => {
       <video
         ref={videoRef}
         id="main__video-record"
+        className={`${facing === 'front' ? 'front-camera-style' : ''}`}
         autoPlay
+        onTouchStart={handleZoomTap}
         loop
         muted
       />

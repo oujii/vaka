@@ -1,6 +1,5 @@
 .container {
   display: flex;
-
   height:100vh;
   width:100vw;
 }
@@ -122,14 +121,18 @@
   
  
  margin-left: -20%;
-  transform: scaleX(-1); /* Flip horizontally */
+  /* transform: scaleX(-1); /* Flip horizontally */
 
 }
 #recorded-video {
 
   margin-left: -20%;
-   transform: scaleX(-1); /* Flip horizontally */
  
+ }
+
+ .front-camera-style {
+  transform: scaleX(-1); /* Flip horizontally */
+
  }
 
 .video-recorder {
@@ -142,6 +145,17 @@
   max-width: 100vw;
   overflow:hidden;
 
+}
+
+.video-container video {
+  
+  min-width: 100%; /* Ensure video covers entire container */
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  position: absolute;
+ 
+  
 }
 
 .button-recorder {
@@ -193,3 +207,8 @@
   top:0;
   right:0;
 }
+
+.feedentry {
+  flex: 1;
+}
+

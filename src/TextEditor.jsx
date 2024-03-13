@@ -6,9 +6,10 @@ import tallImage from './images/vid.mp4';
 import rightColumn from './images/vaka_stream_overlay.webm';
 import VideoRecorder from './VideoRecord';
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, } from 'react';
 import { useLocation } from 'react-router-dom';
 import Draggable from 'react-draggable';
+import MediaUpload from './ChooseFile';
 
 
 
@@ -53,6 +54,7 @@ const AppLayout = ({ children }) => {
         >
           {inputValue}
         </h1></Draggable>
+        <MediaUpload />
 
   
   
