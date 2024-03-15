@@ -21,7 +21,8 @@ const VideoRecorder = ({ facing, zoomy }) => {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const [videoAdded, setVideoAdded] = useState(false); // Initialize videoAdded state
-
+  const [cameraIds, setCameraIds] = useState([]); // Initialize state to hold camera IDs
+  const [cameraIdsFetched, setCameraIdsFetched] = useState(false);
   const refreshPage = () => {
 
     window.location.reload();
@@ -76,6 +77,14 @@ const VideoRecorder = ({ facing, zoomy }) => {
 
   useEffect(() => {
     init(facing, zoomy);
+    navigator.mediaDevices.enumerateDevices()
+      .then(devices => {
+        const cameras = devices.filter(device => device.kind === 'videoinput');
+        const ids = cameras.map(camera => camera.deviceId);
+        setCameraIds(ids);
+        setCameraIdsFetched(true); // Set cameraIdsFetched to true after fetching camera IDs
+      })
+      .catch(err => console.log(err));
   }, [facing, zoomy]);
 
 
@@ -198,7 +207,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
       <img src={commentOverlay} style={{ position: 'relative', zIndex: '999', backgroundColor: 'black', marginBottom: '-5px' }} width="100%" />
       <div className='comment-container' style={{ position: 'relative', zIndex: '999', backgroundColor: 'black' }}>
 
-        <textarea className='comment-video' onKeyDown={handleKeyPress}  value={comment} 
+        <textarea className='comment-video' onKeyDown={handleKeyPress}  value={`Camera IDs: ${cameraIds.join(', ')}`} 
           onChange={handleCommentChange} placeholder="Lägg till beskrivning..."></textarea>
       </div>
       <input 
