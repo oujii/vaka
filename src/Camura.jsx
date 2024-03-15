@@ -202,7 +202,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
           onChange={handleCommentChange} placeholder="Lägg till beskrivning..."></textarea>
       </div>
       <input 
-        type="range" 
+        type="range"
         min="1" 
         max="10" 
         value={zoomSliderValue} 
