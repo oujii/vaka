@@ -126,8 +126,20 @@
 }
 #recorded-video {
 
+
   margin-left: -20%;
  
+ }
+ #recorded-video-from-os {
+max-width:100%;
+padding-bottom: 20px;
+
+ 
+ }
+
+ #laddaupp {
+opacity:0;
+  
  }
 
  .front-camera-style {
@@ -225,6 +237,17 @@
   opacity:1;
   position:absolute;
   top:10px;
+  left:0px;
+  background-color: red;
+}
+
+.upload {
+  width:80px;
+  height: 80px;
+  z-index:99999;
+  opacity:1;
+  position:absolute;
+  top:560px;
   left:0px;
   background-color: red;
 }
