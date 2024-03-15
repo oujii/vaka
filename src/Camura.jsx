@@ -5,19 +5,27 @@ import commentOverlay from './images/record-desc.png';
 import bottomRec from './images/bottombar-recording.png'
 import bottomRec2 from './images/bottombar-recording2.png'
 import bottomRec3 from './images/bottombar-recording3.png'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 
 const VideoRecorder = ({ facing, zoomy }) => {
+  const [facingcamMode, setFacingcamMode] = useState('dd1be32de69f4ac0178be19039aca7958ef6f5ae3759e0fec4ff9aef012ed467'); // Initialize facing mode state
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [comment, setComment] = useState(''); // State variable to hold textarea content
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState(2); // Initial zoom level
   const [zoomSliderValue, setZoomSliderValue] = useState(1); // Initial value for the zoom slider
   const videoRef = useRef(null);
   const navigate = useNavigate();
+
+  const refreshPage = () => {
+
+    window.location.reload();
+  
+  }
 
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
@@ -33,7 +41,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
     try {
       const constraints = {
         audio: false,
-        video: { facingMode: 'environment', zoom: 1 }
+        video: { deviceId: { exact: facingcamMode }, zoom: 1 }
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       setVideoStream(stream);
@@ -65,6 +73,8 @@ const VideoRecorder = ({ facing, zoomy }) => {
   useEffect(() => {
     init(facing, zoomy);
   }, [facing, zoomy]);
+
+
 
   const startRecording = () => {
     if (videoStream && !isRecording) {
@@ -108,13 +118,34 @@ const VideoRecorder = ({ facing, zoomy }) => {
       setIsRecording(false);
     }
   }
+  const flipCam = async () => {
+    try {
+      const newFacingMode = facingcamMode === 'dd1be32de69f4ac0178be19039aca7958ef6f5ae3759e0fec4ff9aef012ed467' ? 'd285904768f0ed3379f792d393a2d351ab979adbdcdb188282d0f68a0e396909' : 'dd1be32de69f4ac0178be19039aca7958ef6f5ae3759e0fec4ff9aef012ed467'; // Toggle facing mode state
+      setFacingcamMode(newFacingMode); // Update the facing mode state
+      const constraints = {
+        audio: false,
+        video: { deviceId: { exact: newFacingMode }, zoom: 1 }
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      setVideoStream(stream);
+      videoRef.current.srcObject = stream;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  
 
   const utbyt = videoUrl ? recOverlay2 : recOverlay;
   const utbyt1 = videoUrl ? bottomRec2 : (isRecording ? bottomRec3 : bottomRec);
 
+  const handleCommentChange = (event) => {
+    setComment(event.target.value); // Update the textarea content
+  }
   const isLinktoPost = () => {
-    navigate('/videorec', { state: { videoUrl } });  
+    navigate('/', { state: { videoUrl, comment } });  
   } 
+  
 
   return (
     <div className='video-rec-container' >
@@ -142,15 +173,24 @@ const VideoRecorder = ({ facing, zoomy }) => {
           autoPlay
           onTouchStart={handleZoomTap}
           loop
-          style={{ transform: 'scale(1.8)' }} // Hardcoded zoom level
+
           muted
         />
       )}
+      
       <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
+      <a onClick={flipCam}><div className='flipcam'></div></a>
+      <a onClick={refreshPage}><div className='refresh'></div></a>
+      <Link to="/">
+        <div className="goback"></div>
+      </Link>
+
+
       <img src={commentOverlay} style={{ position: 'relative', zIndex: '999', backgroundColor: 'black', marginBottom: '-5px' }} width="100%" />
       <div className='comment-container' style={{ position: 'relative', zIndex: '999', backgroundColor: 'black' }}>
 
-        <textarea className='comment-video' onKeyDown={handleKeyPress} placeholder="Lägg till beskrivning..."></textarea>
+        <textarea className='comment-video' onKeyDown={handleKeyPress}  value={comment} 
+          onChange={handleCommentChange} placeholder="Lägg till beskrivning..."></textarea>
       </div>
       <input 
         type="range" 
@@ -170,6 +210,8 @@ const VideoRecorder = ({ facing, zoomy }) => {
         }}
       />
       <img className='bottom-rec-row' onClick={isRecording ? stopRecording : (videoUrl ? isLinktoPost : startRecording)} src={utbyt1} />
+     
+    
     </div>
   );
 };

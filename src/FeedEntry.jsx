@@ -16,8 +16,16 @@ return (
 </div>
 
 
-<img style={{maxWidth: '100%', paddingBottom: '5px'}} src={entry} />
-<div style={{display: 'flex', alignItems: 'center'}}>
+{isImage(entry) ? (
+        <img style={{ maxWidth: '100%', paddingBottom: '5px' }} src={entry} />
+      ) : (
+        <video style={{ maxWidth: '100%', paddingBottom: '5px' }} loop autoPlay>
+          <source src={entry} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      )}
+      
+      <div style={{display: 'flex', alignItems: 'center'}}>
     <img src={interact} style={{width: '90px', paddingLeft: '6px', paddingRight: '10px'}} />
                 
     <div style={{ display: 'flex', justifyContent: 'flex-end', width: '100%', paddingRight:'3px' }}>{likes}</div>
@@ -32,6 +40,9 @@ return (
 
   </div>
 )
+function isImage(entry) {
+  return typeof entry === 'string' && entry.match(/\.(jpeg|jpg|gif|png)$/) != null;
+}
 }
 
 export default FeedEntry;

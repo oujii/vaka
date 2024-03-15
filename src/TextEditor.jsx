@@ -10,6 +10,7 @@ import React, { useState, } from 'react';
 import { useLocation } from 'react-router-dom';
 import Draggable from 'react-draggable';
 import MediaUpload from './ChooseFile';
+import FeedEntry from './FeedEntry';
 
 
 
@@ -17,6 +18,11 @@ import MediaUpload from './ChooseFile';
 const AppLayout = ({ children }) => {
   const location = useLocation();
   const videoUrl = location.state ? location.state.videoUrl : '';
+  const comment = location.state ? location.state.comment : '';
+
+  const timestamp = new Date().getTime();
+  const filename = `video_${timestamp}.mp4`;
+
   const inputValue = location.state && location.state.inputValue;
     const [isFullscreen, setIsFullscreen] = useState(false);
     function toggleFullscreen() {
@@ -33,27 +39,14 @@ const AppLayout = ({ children }) => {
    
   return (
     
-    <div> <a href='{videoUrl}' download='video.mp4'>download video</a><video id="recorded-video" autoPlay loop>
-    <source src={videoUrl} loop autoPlay type="video/webm" />
-    Your browser does not support the video tag.
-  </video>
+    <div> 
+      
+      <a href={videoUrl} download={filename}>
+        <FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={videoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
+      </a>
   
   
-  <Draggable handle=".handle">
-        <h1 className='handle'
-          style={{
-            position: 'absolute',
-            zIndex: '999',
-            color: 'black',
-            left: '50%',
-            top: '50%',
-            backgroundColor: 'yellow',
-            border: 'hidden',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          {inputValue}
-        </h1></Draggable>
+
         <MediaUpload />
 
   

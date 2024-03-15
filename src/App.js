@@ -22,19 +22,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AppLayoutHome><Home /></AppLayoutHome>} />
-        <Route path="/scener" element={<ScenerIndex><Home /></ScenerIndex>} />
-        <Route path="/selfie" element={<MyPageLayout><MyPage1 /></MyPageLayout>} />
-        <Route path="/backphoto" element={<MyPageLayout><BackPhoto /></MyPageLayout>} />
-        <Route path="/back" element={<MyPageLayout><MyPage /></MyPageLayout>} />
         <Route path="/livestream" element={<AppLayout><Home /></AppLayout>} />
         <Route path="/camura" element={<MyPageLayout><Camura /></MyPageLayout>} />
-        <Route path="/pinch" element={<MyPageLayout><PinchToZoom /></MyPageLayout>} />
-        <Route path="/videorec" element={<motion.div
-    initial={{ x: 0 }}
-    animate={{ x: '-150%' }}
-    exit={{ x: '-150%' }}
-    transition={{ duration: 0.5 }}
-      ><VideoRecLayout><VideoRec /></VideoRecLayout></motion.div>} />
+
       </Routes>
     </BrowserRouter>
   );
