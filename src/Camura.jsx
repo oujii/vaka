@@ -134,24 +134,30 @@ const VideoRecorder = () => {
   }
   const flipCam = async () => {
     try {
-      const deviceIds = ['4015aa0f5696f01fd9cffc3fe980739ce287c4fd83074ca821dd658dd63aecf0', 'b95bced424013fa7d35a3de3ad2ce76c5c4f5aace9e3088d05637d5fd6d53954', 'fc320b79c6cf0915cc6bc9d6a6a69d6a6ae4c9e1e3ace41a22bfed9a756eb7f2', '2247a091306ac9f22f4a0a17cca5154fea83f45e05721d350ee19cc9224e5b45'];
-      const currentDeviceIndex = deviceIds.indexOf(facingcamMode);
-      const nextDeviceIndex = (currentDeviceIndex + 1) % deviceIds.length;
-      const nextDeviceId = deviceIds[nextDeviceIndex];
-      
+      // Get the index of the current device ID in the array
+      const currentIndex = cameraIds.indexOf(facingcamMode);
+      // Calculate the index of the next device ID
+      const nextIndex = (currentIndex + 1) % cameraIds.length;
+      // Get the next device ID from the array
+      const nextDeviceId = cameraIds[nextIndex];
+  
+      // Set up constraints with the next device ID
       const constraints = {
         audio: false,
         video: { deviceId: { exact: nextDeviceId }, zoom: '1' }
       };
+  
+      // Get media stream with the next device ID
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       setVideoStream(stream);
       videoRef.current.srcObject = stream;
+  
+      // Update the facingcamMode state with the next device ID
       setFacingcamMode(nextDeviceId);
     } catch (err) {
       console.log(err);
     }
   }
-  
 
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
