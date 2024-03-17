@@ -73,18 +73,6 @@ const VideoRecorder = () => {
   }
   
 
-  useEffect(() => {
-    init();
-    navigator.mediaDevices.enumerateDevices()
-      .then(devices => {
-        const cameras = devices.filter(device => device.kind === 'videoinput');
-        const ids = cameras.map(camera => camera.deviceId);
-        setCameraIds(ids);
-        setCameraIdsFetched(true); // Set cameraIdsFetched to true after fetching camera IDs
-        console.log(ids)
-      })
-      .catch(err => console.log(err));
-  }, []);
 
 
 
@@ -132,17 +120,23 @@ const VideoRecorder = () => {
   }
   const flipCam = async () => {
     try {
+      // Fetch camera IDs
+      const devices = await navigator.mediaDevices.enumerateDevices();
+      const cameras = devices.filter(device => device.kind === 'videoinput');
+      const ids = cameras.map(camera => camera.deviceId);
+      setCameraIds(ids);
+  
       const currentIndex = cameraIds.indexOf(facingcamMode);
       const nextIndex = (currentIndex + 1) % cameraIds.length;
       const nextDeviceId = cameraIds[nextIndex];
-
+  
       setFacingcamMode(nextDeviceId); // Update the facingcamMode state with the next device ID
-      init();
-      
+      init(); // Re-initialize to update the video stream with the new device
     } catch (err) {
       console.log(err);
     }
   }
+  
   
 
   const handleFileInputChange = (event) => {
