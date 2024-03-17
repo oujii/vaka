@@ -230,6 +230,16 @@ opacity:0;
   left:240px;
   background-color: red;
 }
+.stream {
+  width:60px;
+  height: 40px;
+  z-index:99999;
+  opacity:1;
+  position:absolute;
+  top:550px;
+  left:65px;
+  background-color: red;
+}
 .refresh {
   width:80px;
   height: 80px;

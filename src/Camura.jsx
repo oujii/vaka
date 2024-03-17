@@ -24,7 +24,8 @@ const VideoRecorder = () => {
   
   const refreshPage = () => {
 
-    window.location.reload();
+    setVideoUrl(null);
+    init();
   
   }
 
@@ -46,8 +47,8 @@ const VideoRecorder = () => {
 
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      videoRef.current.srcObject = stream;
       setVideoStream(stream);
+      videoRef.current.srcObject = stream;
   
       const [track] = stream.getVideoTracks();
       const capabilities = track.getCapabilities();
@@ -71,7 +72,9 @@ const VideoRecorder = () => {
   }
   
 
-
+    useEffect(() => {
+    init();
+  }, [facingDir]);
 
 
   const startRecording = () => {
@@ -163,7 +166,7 @@ const VideoRecorder = () => {
         }}
       />
       {videoUrl && (
-        <video className={`${facingDir === 'environment' ? 'front-camera-style' : ''}`}  id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
+        <video className={`${facingDir === 'user' ? 'front-camera-style' : ''}`}  id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
           <source src={videoUrl} loop autoPlay type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -172,7 +175,7 @@ const VideoRecorder = () => {
         <video
           ref={videoRef}
           id="main__video-record"
-          className={`${facingDir === 'environment' ? 'front-camera-style' : ''}`} 
+          className={`${facingDir === 'user' ? 'front-camera-style' : ''}`} 
           autoPlay
           onTouchStart={handleZoomTap}
           loop
@@ -184,6 +187,7 @@ const VideoRecorder = () => {
       <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
       <a onClick={flipCam}><div className='flipcam'></div></a>
       <a onClick={refreshPage}><div className='refresh'></div></a>
+      <Link to={'/livestream'}><div className='stream'></div></Link>
       <input type="file" id="laddaupp" className='upload' accept="video/*" onChange={handleFileInputChange} />
       <Link to={'/'}>
       <div className='goback'></div></Link>
