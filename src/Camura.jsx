@@ -41,7 +41,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
 
   const init = async (facingDirection, zoomy) => {
     try {
-      const deviceIds = ['37886fffb19a841faf57f04e73eb59c89d84a66ad9a8186670fcbad2232bfe20', '7c30901f7985b174d3a0810cd0168d3870346d1407ae4c1b7df74a9a8d74e2b9', '438bfea109dc35a819c7cc5253b0e65d58cb40e06add9a2bdebb1e9394e57591'];
+      const deviceIds = ['7c30901f7985b174d3a0810cd0168d3870346d1407ae4c1b7df74a9a8d74e2b9', '438bfea109dc35a819c7cc5253b0e65d58cb40e06add9a2bdebb1e9394e57591'];
 
       const currentDeviceIndex = deviceIds.indexOf(facingcamMode);
       const nextDeviceIndex = (currentDeviceIndex + 1) % deviceIds.length;
