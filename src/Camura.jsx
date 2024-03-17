@@ -137,7 +137,7 @@ const VideoRecorder = () => {
       const nextDeviceId = cameraIds[nextIndex];
 
       setFacingcamMode(nextDeviceId); // Update the facingcamMode state with the next device ID
-
+      init();
       
     } catch (err) {
       console.log(err);
