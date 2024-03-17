@@ -9,7 +9,6 @@ import { useNavigate, Link } from 'react-router-dom';
 
 
 const VideoRecorder = () => {
-  const [facingcamMode, setFacingcamMode] = useState('e6fda4cd899527b6afc6c3d1c16b6c7224b1597eed3b9eff22e62358695a083e'); // Initialize facing mode state
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
@@ -21,9 +20,7 @@ const VideoRecorder = () => {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const [videoAdded, setVideoAdded] = useState(false); // Initialize videoAdded state
-  const [cameraIds, setCameraIds] = useState([]); // Initialize state to hold camera IDs
-  const [cameraIdsFetched, setCameraIdsFetched] = useState(false);
-  
+  const [facingDir, setFacingDir] = useState('user'); // Initial facing mode
   
   const refreshPage = () => {
 
@@ -45,7 +42,8 @@ const VideoRecorder = () => {
     try {
       const constraints = {
         audio: false,
-        video: { deviceId: { exact: facingcamMode }, zoom: '1' } // Use the first device ID for initial stream
+        video: { facingMode: facingDir } // Remove zoom property
+
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       setVideoStream(stream);
@@ -120,19 +118,8 @@ const VideoRecorder = () => {
   }
   const flipCam = async () => {
     try {
-      // Fetch camera IDs
-      const devices = await navigator.mediaDevices.enumerateDevices();
-      const cameras = devices.filter(device => device.kind === 'videoinput');
-      const ids = cameras.map(camera => camera.deviceId);
-      setCameraIds(ids);
-
-      console.log(cameraIds);
-      
-      const currentIndex = cameraIds.indexOf(facingcamMode);
-      const nextIndex = (currentIndex + 1) % cameraIds.length;
-      const nextDeviceId = cameraIds[nextIndex];
-  
-      setFacingcamMode(nextDeviceId); // Update the facingcamMode state with the next device ID
+     
+      facingDir == 'user' ? setFacingDir('environment') : setFacingDir('user');
       init(); // Re-initialize to update the video stream with the new device
     } catch (err) {
       console.log(err);
@@ -176,7 +163,7 @@ const VideoRecorder = () => {
         }}
       />
       {videoUrl && (
-        <video id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
+        <video className={`${facingDir === 'front' ? 'front-camera-style' : ''}`}  id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
           <source src={videoUrl} loop autoPlay type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -185,7 +172,7 @@ const VideoRecorder = () => {
         <video
           ref={videoRef}
           id="main__video-record"
-          
+          className={`${facingDir === 'front' ? 'front-camera-style' : ''}`} 
           autoPlay
           onTouchStart={handleZoomTap}
           loop
