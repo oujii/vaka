@@ -138,14 +138,7 @@ const VideoRecorder = () => {
 
       setFacingcamMode(nextDeviceId); // Update the facingcamMode state with the next device ID
 
-      const constraints = {
-        audio: false,
-        video: { deviceId: { exact: nextDeviceId }, zoom: '1' } // Use the next device ID for the stream
-      };
-
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      setVideoStream(stream);
-      videoRef.current.srcObject = stream;
+      
     } catch (err) {
       console.log(err);
     }
