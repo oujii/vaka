@@ -9,7 +9,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 
 const VideoRecorder = () => {
-  const [facingcamMode, setFacingcamMode] = useState('dd1be32de69f4ac0178be19039aca7958ef6f5ae3759e0fec4ff9aef012ed467'); // Initialize facing mode state
+  const [facingcamMode, setFacingcamMode] = useState('e6fda4cd899527b6afc6c3d1c16b6c7224b1597eed3b9eff22e62358695a083e'); // Initialize facing mode state
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
   const [isRecording, setIsRecording] = useState(false);
