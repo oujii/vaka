@@ -125,7 +125,9 @@ const VideoRecorder = () => {
       const cameras = devices.filter(device => device.kind === 'videoinput');
       const ids = cameras.map(camera => camera.deviceId);
       setCameraIds(ids);
-  
+
+      console.log(cameraIds);
+      
       const currentIndex = cameraIds.indexOf(facingcamMode);
       const nextIndex = (currentIndex + 1) % cameraIds.length;
       const nextDeviceId = cameraIds[nextIndex];
