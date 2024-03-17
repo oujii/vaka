@@ -46,8 +46,8 @@ const VideoRecorder = () => {
 
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
-      setVideoStream(stream);
       videoRef.current.srcObject = stream;
+      setVideoStream(stream);
   
       const [track] = stream.getVideoTracks();
       const capabilities = track.getCapabilities();
@@ -163,7 +163,7 @@ const VideoRecorder = () => {
         }}
       />
       {videoUrl && (
-        <video className={`${facingDir === 'front' ? 'front-camera-style' : ''}`}  id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
+        <video className={`${facingDir === 'environment' ? 'front-camera-style' : ''}`}  id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
           <source src={videoUrl} loop autoPlay type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -172,7 +172,7 @@ const VideoRecorder = () => {
         <video
           ref={videoRef}
           id="main__video-record"
-          className={`${facingDir === 'front' ? 'front-camera-style' : ''}`} 
+          className={`${facingDir === 'environment' ? 'front-camera-style' : ''}`} 
           autoPlay
           onTouchStart={handleZoomTap}
           loop
@@ -191,7 +191,7 @@ const VideoRecorder = () => {
       <img src={commentOverlay} style={{ position: 'relative', zIndex: '999', backgroundColor: 'black', marginBottom: '-5px' }} width="100%" />
       <div className='comment-container' style={{ position: 'relative', zIndex: '999', backgroundColor: 'black' }}>
 
-        <textarea className='comment-video' onKeyDown={handleKeyPress}  value={`Camera IDs: ${cameraIds.join(', ')}`} 
+        <textarea className='comment-video' onKeyDown={handleKeyPress}  value={comment}
           onChange={handleCommentChange} placeholder="Lägg till beskrivning..."></textarea>
       </div>
       <input 
