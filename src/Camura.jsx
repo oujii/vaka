@@ -86,7 +86,7 @@ const VideoRecorder = () => {
         setCameraIdsFetched(true); // Set cameraIdsFetched to true after fetching camera IDs
       })
       .catch(err => console.log(err));
-  }, [facing, zoomy]);
+  }, []);
 
 
 
@@ -141,7 +141,7 @@ const VideoRecorder = () => {
       
       const constraints = {
         audio: false,
-        video: { deviceId: { exact: nextDeviceId }, zoom: zoomy }
+        video: { deviceId: { exact: nextDeviceId }, zoom: '1' }
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       setVideoStream(stream);
@@ -188,7 +188,7 @@ const VideoRecorder = () => {
         }}
       />
       {videoUrl && (
-        <video className={`${facing === 'front' ? 'front-camera-style' : ''}`}   id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
+        <video id={videoAdded ? "recorded-video-from-os" : "recorded-video"} autoPlay loop>
           <source src={videoUrl} loop autoPlay type="video/webm" />
           Your browser does not support the video tag.
         </video>
@@ -197,7 +197,7 @@ const VideoRecorder = () => {
         <video
           ref={videoRef}
           id="main__video-record"
-          className={`${facing === 'front' ? 'front-camera-style' : ''}`}
+          
           autoPlay
           onTouchStart={handleZoomTap}
           loop
