@@ -8,7 +8,7 @@ import bottomRec3 from './images/bottombar-recording3.png'
 import { useNavigate, Link } from 'react-router-dom';
 
 
-const VideoRecorder = ({ facing, zoomy }) => {
+const VideoRecorder = () => {
   const [facingcamMode, setFacingcamMode] = useState('dd1be32de69f4ac0178be19039aca7958ef6f5ae3759e0fec4ff9aef012ed467'); // Initialize facing mode state
   const [videoStream, setVideoStream] = useState(null);
   const [mediaRecorder, setMediaRecorder] = useState(null);
@@ -39,9 +39,9 @@ const VideoRecorder = ({ facing, zoomy }) => {
     }
   }
 
-  const init = async (facingDirection, zoomy) => {
+  const init = async () => {
     try {
-      const deviceIds = ['7c30901f7985b174d3a0810cd0168d3870346d1407ae4c1b7df74a9a8d74e2b9', '438bfea109dc35a819c7cc5253b0e65d58cb40e06add9a2bdebb1e9394e57591'];
+      const deviceIds = ['e6fda4cd899527b6afc6c3d1c16b6c7224b1597eed3b9eff22e62358695a083e', '37886fffb19a841faf57f04e73eb59c89d84a66ad9a8186670fcbad2232bfe20', '7c30901f7985b174d3a0810cd0168d3870346d1407ae4c1b7df74a9a8d74e2b9', '438bfea109dc35a819c7cc5253b0e65d58cb40e06add9a2bdebb1e9394e57591'];
 
       const currentDeviceIndex = deviceIds.indexOf(facingcamMode);
       const nextDeviceIndex = (currentDeviceIndex + 1) % deviceIds.length;
@@ -49,7 +49,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
   
       const constraints = {
         audio: false,
-        video: { deviceId: { exact: nextDeviceId }, zoom: zoomy }
+        video: { deviceId: { exact: nextDeviceId }, zoom: '1' }
       };
       const stream = await navigator.mediaDevices.getUserMedia(constraints);
       setVideoStream(stream);
@@ -77,7 +77,7 @@ const VideoRecorder = ({ facing, zoomy }) => {
   }
 
   useEffect(() => {
-    init(facing, zoomy);
+    init();
     navigator.mediaDevices.enumerateDevices()
       .then(devices => {
         const cameras = devices.filter(device => device.kind === 'videoinput');
@@ -132,18 +132,26 @@ const VideoRecorder = ({ facing, zoomy }) => {
       setIsRecording(false);
     }
   }
-  const flipCam = () => {
+  const flipCam = async () => {
     try {
       const deviceIds = ['4015aa0f5696f01fd9cffc3fe980739ce287c4fd83074ca821dd658dd63aecf0', 'b95bced424013fa7d35a3de3ad2ce76c5c4f5aace9e3088d05637d5fd6d53954', 'fc320b79c6cf0915cc6bc9d6a6a69d6a6ae4c9e1e3ace41a22bfed9a756eb7f2', '2247a091306ac9f22f4a0a17cca5154fea83f45e05721d350ee19cc9224e5b45'];
       const currentDeviceIndex = deviceIds.indexOf(facingcamMode);
       const nextDeviceIndex = (currentDeviceIndex + 1) % deviceIds.length;
       const nextDeviceId = deviceIds[nextDeviceIndex];
+      
+      const constraints = {
+        audio: false,
+        video: { deviceId: { exact: nextDeviceId }, zoom: zoomy }
+      };
+      const stream = await navigator.mediaDevices.getUserMedia(constraints);
+      setVideoStream(stream);
+      videoRef.current.srcObject = stream;
       setFacingcamMode(nextDeviceId);
-      init(facing, zoomy); // Reinitialize with the new device ID
     } catch (err) {
       console.log(err);
     }
   }
+  
 
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
