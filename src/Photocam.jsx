@@ -22,7 +22,7 @@ const VideoRecorder = () => {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const [videoAdded, setVideoAdded] = useState(false); // Initialize videoAdded state
-  const [facingDir, setFacingDir] = useState('user'); // Initial facing mode
+  const [facingDir, setFacingDir] = useState('environment'); // Initial facing mode
   const [photoUrl, setPhotoUrl] = useState(null); // State variable to hold the photo URL
   const [imageUrl, setImageUrl] = useState(null); // State variable to hold the photo URL
   const [imageAdded, setImageAdded] = useState(null); // State variable to hold the photo URL
@@ -41,6 +41,8 @@ const VideoRecorder = () => {
   const refreshPage = () => {
 
     setPhotoUrl(null);
+    setImageUrl(null);
+    setImageAdded(false);
     init();
   
   }
@@ -159,9 +161,16 @@ const VideoRecorder = () => {
   const handleCommentChange = (event) => {
     setComment(event.target.value); // Update the textarea content
   }
-  const isLinktoPost = () => {
-    navigate('/', { state: { photoUrl, comment } });  
-  } 
+    const isLinktoPost = () => {
+    if (imageAdded) {
+      const photoUrl = imageUrl;
+      navigate('/', { state: { photoUrl, comment } });
+    } else {
+      navigate('/', { state: { photoUrl, comment } });
+    }
+  }
+
+
   
   const browsePhotos = () => {
     navigate('/photos', {state: {savedPhotos}});
@@ -182,7 +191,7 @@ const VideoRecorder = () => {
 {!capturedPhotoUrl && photoUrl && (
   <img className='thumbnail' onClick={browsePhotos} src={photoUrl} alt="Captured Photo" />
 )}
-        {capturedPhotoUrl ? (<img id="main__video-record" className='mirror' src={photoUrl} />) : (
+        {capturedPhotoUrl || imageAdded ? (<img id="main__video-record" className='attached-pic' src={imageAdded ? imageUrl: photoUrl} />) : (
           
           <video
           ref={videoRef}
@@ -237,7 +246,12 @@ const VideoRecorder = () => {
           transformOrigin: 'center', // Ensure rotation is around the center
       }}
       />
-      {!capturedPhotoUrl ? (<img className='bottom-rec-row' src={bottomBar} onClick={capturePhoto} />) : (<img className='bottom-rec-row' onClick={isLinktoPost} src={bottomBarPost} />)}
+      {!capturedPhotoUrl && !imageUrl ? (
+        <img className='bottom-rec-row' src={bottomBar} onClick={capturePhoto} />
+      ) : (
+        <img className='bottom-rec-row' onClick={isLinktoPost} src={bottomBarPost} />
+      )}
+
 
 
     

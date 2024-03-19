@@ -29,7 +29,7 @@ const PhotosComponent = () => {
   maxHeight: '90vh', 
   overflow: 'hidden', 
   backgroundColor: 'black',
-  paddingBottom: '113px'
+  paddingBottom: '109px'
 
 }}>
 <img src={pickPhoto} className='pickphoto-overlay'></img>

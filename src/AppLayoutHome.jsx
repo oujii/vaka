@@ -9,6 +9,7 @@ import React, { useState } from 'react';
 import pic1 from './images/profilepic.png';
 import pic1entry from './images/entry.png';
 import newPost from './images/new-post.png';
+import profilePic from './images/profilepic.png';
 import { Link } from 'react-router-dom';
 import tallImage from './images/vid.mp4';
 import VideoRecorder from './VideoRecord';
@@ -75,7 +76,7 @@ const AppLayout = ({ children }) => {
 
         {videoUrl ? (
           <a href={videoUrl} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
-          <FeedEntry userpic="hej.jpg" username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" />
+          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" />
           </a>) : (photoUrl ? (
                       <a href={photoUrl} download={filenamePhoto} onClick={() => {localStorage.clear(); setPhotoUrl('');}}><FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={photoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" /></a>
 
