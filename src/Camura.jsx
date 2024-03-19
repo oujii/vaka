@@ -163,7 +163,8 @@ const VideoRecorder = () => {
         alt="right column overlay"
         style={{
           opacity: isRecording ? 0 : 1,
-          transition: 'opacity 0.5s ease-in-out'
+          transition: 'opacity 0.5s ease-in-out',
+          marginTop: '10vh'
         }}
       />
       {videoUrl && (
