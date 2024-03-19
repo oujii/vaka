@@ -21,7 +21,7 @@ const VideoRecorder = () => {
   const videoRef = useRef(null);
   const navigate = useNavigate();
   const [videoAdded, setVideoAdded] = useState(false); // Initialize videoAdded state
-  const [facingDir, setFacingDir] = useState('user'); // Initial facing mode
+  const [facingDir, setFacingDir] = useState('environment'); // Initial facing mode
   
   const refreshPage = () => {
 
@@ -216,8 +216,8 @@ const VideoRecorder = () => {
           width: '200px',
           height: '1px',
           top: '40%',
-          right: '-25%',
-          opacity: '0.01',
+          right: '-20%',
+          opacity: '0.05',
           zIndex: '999',
           background: 'linear-gradient(to right, #007bff, #007bff)',
           borderRadius: '0px',

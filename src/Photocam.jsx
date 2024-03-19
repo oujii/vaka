@@ -171,7 +171,7 @@ const VideoRecorder = () => {
 {!capturedPhotoUrl && photoUrl && (
   <img className='thumbnail' onClick={browsePhotos} src={photoUrl} alt="Captured Photo" />
 )}
-        {capturedPhotoUrl ? (<img id="main__video-record" src={photoUrl} />) : (
+        {capturedPhotoUrl ? (<img id="main__video-record" className='mirror' src={photoUrl} />) : (
           
           <video
           ref={videoRef}

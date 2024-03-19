@@ -17,7 +17,7 @@ return (
 
 
 {isImage(entry) ? (
-        <img style={{ maxWidth: '100%', paddingBottom: '5px' }} src={entry} />
+        <img style={{ maxWidth: '100%', paddingBottom: '5px' }} className='mirror' src={entry} />
       ) : (
         <video style={{ maxWidth: '100%', paddingBottom: '5px' }} loop autoPlay>
           <source src={entry} type="video/mp4" />

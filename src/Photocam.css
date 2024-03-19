@@ -12,7 +12,10 @@
 .thumbnail {
   z-index: 9999;
   position: absolute;
-  top: 520px;
+  top: 430px;
   left: 10px;
   width: 80px;
+  transform: scaleX(-1); /* Flip horizontally */
+
 }
+

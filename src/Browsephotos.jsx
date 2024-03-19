@@ -25,7 +25,7 @@ const PhotosComponent = () => {
       <SwipeableViews enableMouseEvents>
         {savedPhotos.map((photoUrl, index) => (
           <div key={index} style={{ backgroundColor: 'black', position: 'relative' }}>
-            <img style={{ maxWidth: "100vw", paddingTop: '50%' }} src={photoUrl} alt={`Photo ${index}`} />
+            <img className='mirror' style={{ maxWidth: "100vw", paddingTop: '50%' }} src={photoUrl} alt={`Photo ${index}`} />
             <button
               style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', padding: '10px', borderRadius: '5px', background: 'white', color: 'black', border: 'none', cursor: 'pointer' }}
               onClick={() => handleSelectPhoto(photoUrl)}
