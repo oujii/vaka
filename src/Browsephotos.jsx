@@ -25,7 +25,7 @@ const PhotosComponent = () => {
   return (
     <div style={{ 
   maxWidth: "100%", 
-  maxHeight: '100vh', 
+  maxHeight: '90vh', 
   overflow: 'hidden', 
   backgroundColor: 'black',
 }}>
@@ -36,7 +36,7 @@ const PhotosComponent = () => {
           <div key={index} style={{ position: 'relative' }}>
             <img className='mirror' style={{ maxWidth: "100vw", paddingTop: '50%' }} src={photoUrl} alt={`Photo ${index}`} />
             <button
-              style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', padding: '10px', borderRadius: '5px', background: 'white', color: 'black', border: 'none', cursor: 'pointer' }}
+              style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', padding: '10px', borderRadius: '5px', background: 'white', color: 'black', border: 'none', cursor: 'pointer' }}
               onClick={() => handleSelectPhoto(photoUrl)}
             >
               Pick this photo
