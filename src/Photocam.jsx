@@ -7,6 +7,7 @@ import bottomRec2 from './images/bottombar-recording2.png'
 import bottomRec3 from './images/bottombar-recording3.png'
 import bottomBar from './images/bottom-bar_photo.png'
 import flip from './images/flip.png'
+import utbyt from './images/OVERLAY_photo.png'
 import bottomBarPost from './images/bottom-bar_photo-post.png'
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './Photocam.css';
@@ -168,6 +169,15 @@ const VideoRecorder = () => {
 
   return (
     <div className='video-rec-container' >
+       <img 
+        className="video-recorder"
+        src={utbyt}
+        width="100%"
+        alt="right column overlay"
+        style={{
+          marginTop: '10vh'
+        }}
+      />
 
 {!capturedPhotoUrl && photoUrl && (
   <img className='thumbnail' onClick={browsePhotos} src={photoUrl} alt="Captured Photo" />
@@ -188,7 +198,7 @@ const VideoRecorder = () => {
       
       
       <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
-      <Link to={'/photocam'}><div className='photo'></div></Link>
+      <Link to={'/camura'}><div className='video-roll'></div></Link>
       <a onClick={flipCam}>
   <div className='flipcam' style={{display:'hidden'}}></div>
 </a>
