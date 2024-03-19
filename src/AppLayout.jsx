@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 
 const AppLayout = ({ children }) => {
     const [isFullscreen, setIsFullscreen] = useState(false);
+    const [isStopStream, setStopStream] = useState(false);
     function toggleFullscreen() {
       if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
@@ -21,6 +22,7 @@ const AppLayout = ({ children }) => {
         }
       }
     }
+ 
    
   return (
     <div className='wrapper'>

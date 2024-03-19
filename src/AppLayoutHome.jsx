@@ -8,6 +8,7 @@ import rightColumn from './images/vaka_stream_overlay.webm';
 import React, { useState } from 'react';
 import pic1 from './images/profilepic.png';
 import pic1entry from './images/entry.png';
+import newPost from './images/new-post.png';
 import { Link } from 'react-router-dom';
 import tallImage from './images/vid.mp4';
 import VideoRecorder from './VideoRecord';
@@ -89,15 +90,13 @@ const AppLayout = ({ children }) => {
       
         <Link to="/camura" style={{
           position: 'sticky',
-          marginLeft: '150px',
-          marginRight: '150px',
-          bottom: 10,
-          borderRadius: '50%',
-          height: '50px',
-          backgroundColor: 'red',
-          boxShadow: '0px 0px 10px rgba(0,0,0,0.5)',
-        }}><div
-        ></div></Link>
+          bottom: 20,
+        }}><img src={newPost} style={{
+          position: 'sticky',
+          marginLeft: '137px',
+          width: '70px',
+        }}></img>
+        </Link>
 
 
 

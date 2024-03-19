@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SwipeableViews from 'react-swipeable-views-react-18-fix';
+import pickPhoto from './images/pick-photo.png';
+
 
 
 const PhotosComponent = () => {
@@ -21,10 +23,17 @@ const PhotosComponent = () => {
   };
 
   return (
-    <div style={{ maxWidth: "100%", minHeight: '100vh', overflow: 'hidden', backgroundColor: 'black' }}>
+    <div style={{ 
+  maxWidth: "100%", 
+  minHeight: '100vh', 
+  overflow: 'hidden', 
+  backgroundColor: 'black',
+}}>
+<img src={pickPhoto} className='pickphoto-overlay'></img>
+
       <SwipeableViews enableMouseEvents>
         {savedPhotos.map((photoUrl, index) => (
-          <div key={index} style={{ backgroundColor: 'black', position: 'relative' }}>
+          <div key={index} style={{ position: 'relative' }}>
             <img className='mirror' style={{ maxWidth: "100vw", paddingTop: '50%' }} src={photoUrl} alt={`Photo ${index}`} />
             <button
               style={{ position: 'absolute', bottom: '10px', left: '50%', transform: 'translateX(-50%)', padding: '10px', borderRadius: '5px', background: 'white', color: 'black', border: 'none', cursor: 'pointer' }}

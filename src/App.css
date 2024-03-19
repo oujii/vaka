@@ -304,3 +304,10 @@ a {
   transform: scaleX(-1); /* Flip horizontally */
 
 }
+
+.pickphoto-overlay {
+  position: absolute;
+  max-width:100%;
+  top:0px;
+  left:0px;
+}

@@ -6,6 +6,7 @@ import bottomRec from './images/bottombar-recording.png'
 import bottomRec2 from './images/bottombar-recording2.png'
 import bottomRec3 from './images/bottombar-recording3.png'
 import bottomBar from './images/bottom-bar_photo.png'
+import flip from './images/flip.png'
 import bottomBarPost from './images/bottom-bar_photo-post.png'
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './Photocam.css';
