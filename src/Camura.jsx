@@ -150,7 +150,7 @@ const VideoRecorder = () => {
     setComment(event.target.value); // Update the textarea content
   }
   const isLinktoPost = () => {
-    navigate('/', { state: { videoUrl, comment } });  
+    navigate('/', { state: { videoUrl, comment, facingDir } });  
   } 
   
 

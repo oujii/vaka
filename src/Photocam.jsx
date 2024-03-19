@@ -5,6 +5,8 @@ import commentOverlay from './images/record-desc.png';
 import bottomRec from './images/bottombar-recording.png'
 import bottomRec2 from './images/bottombar-recording2.png'
 import bottomRec3 from './images/bottombar-recording3.png'
+import bottomBar from './images/bottom-bar_photo.png'
+import bottomBarPost from './images/bottom-bar_photo-post.png'
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import './Photocam.css';
 
@@ -224,8 +226,9 @@ const VideoRecorder = () => {
           transformOrigin: 'center', // Ensure rotation is around the center
       }}
       />
-      {!capturedPhotoUrl ? (<img className='takephoto' onClick={capturePhoto} />) : (<img className='takephoto' onClick={isLinktoPost} style={{backgroundColor:'blue'}} />)}
-     
+      {!capturedPhotoUrl ? (<img className='bottom-rec-row' src={bottomBar} onClick={capturePhoto} />) : (<img className='bottom-rec-row' onClick={isLinktoPost} src={bottomBarPost} />)}
+
+
     
     </div>
   );

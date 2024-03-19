@@ -34,9 +34,11 @@ const AppLayout = ({ children }) => {
   const location = useLocation();
   const [videoUrl, setVideoUrl] = useState(location.state ? location.state.videoUrl : '');
   const [photoUrl, setPhotoUrl] = useState(location.state ? location.state.photoUrl : '');
+  const [facingDir, setFacingDir] = useState(location.state ? location.state.facingDir : '');
   const comment = location.state ? location.state.comment : '';
   const timestamp = new Date().getTime();
   const filename = `video_${timestamp}.mp4`;
+  const filenamePhoto = `photo_${timestamp}.jpg`;
   const [isFullscreen, setIsFullscreen] = useState(false);
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
@@ -72,9 +74,9 @@ const AppLayout = ({ children }) => {
 
         {videoUrl ? (
           <a href={videoUrl} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
-            <FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={videoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
+          <FeedEntry userpic="hej.jpg" username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" />
           </a>) : (photoUrl ? (
-                      <FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={photoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
+                      <a href={photoUrl} download={filenamePhoto} onClick={() => {localStorage.clear(); setPhotoUrl('');}}><FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={photoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" /></a>
 
         ) : (null))
         }
@@ -82,7 +84,7 @@ const AppLayout = ({ children }) => {
         {/* Render the shuffled feed entries */}
         {shuffledFeedEntries.map((entry, index) => (
           <FeedEntry key={index} {...entry} />
-        ))}
+        ))} 
 
       
         <Link to="/camura" style={{

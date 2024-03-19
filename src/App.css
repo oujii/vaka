@@ -155,6 +155,7 @@ opacity:0;
 
 .video-rec-container {
   max-width: 100vw;
+  margin-top: -15vh;
   overflow:hidden;
 
 }
@@ -214,9 +215,9 @@ opacity:0;
   width:60px;
   height:60px;
   z-index:99999;
-  opacity:1;
+  opacity:0.1;
   position:absolute;
-  top:597px;
+  top:467px;
   left:280px;
   background-color: red;
 }
@@ -224,7 +225,7 @@ opacity:0;
   width:80px;
   height: 80px;
   z-index:99999;
-  opacity:1;
+  opacity:0.01;
   position:absolute;
   top:10px;
   left:240px;
@@ -235,9 +236,9 @@ opacity:0;
   width:70px;
   height: 40px;
   z-index:99999;
-  opacity:1;
+  opacity:0.01;
   position:absolute;
-  top:550px;
+  top:420px;
   left:210px;
   background-color: red;
 }
@@ -245,9 +246,9 @@ opacity:0;
   width:60px;
   height: 40px;
   z-index:99999;
-  opacity:1;
+  opacity:0.1;
   position:absolute;
-  top:550px;
+  top:420px;
   left:65px;
   background-color: red;
 }
@@ -255,7 +256,7 @@ opacity:0;
   width:80px;
   height: 80px;
   z-index:99999;
-  opacity:1;
+  opacity:0.1;
   position:absolute;
   top:10px;
   left:0px;
@@ -268,7 +269,7 @@ opacity:0;
   z-index:99999;
   opacity:1;
   position:absolute;
-  top:560px;
+  top:460px;
   left:0px;
   background-color: red;
 }
@@ -276,7 +277,7 @@ opacity:0;
   width:80px;
   height: 80px;
   z-index:99999;
-  opacity:1;
+  opacity:0.1;
   position:absolute;
   top:300px;
   left:0px;
@@ -299,3 +300,7 @@ a {
   text-decoration: none;
 }
 
+.mirror {
+  transform: scaleX(-1); /* Flip horizontally */
+
+}
