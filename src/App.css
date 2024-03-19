@@ -203,7 +203,7 @@ opacity:0.1;
 
 .comment-video:focus {
   outline:none;
-  bottom:160px;
+  bottom:110px;
   z-index:900;
   padding:10px;
   margin-left:0px;
