@@ -10,7 +10,7 @@ return (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 5 }}
         >
-                  <Link to="/mypage" className='linky'></Link> //kommer läggas overlay på video
+                  
                   
         </motion.div>
 )

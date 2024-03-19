@@ -1,0 +1,18 @@
+.takephoto {
+  width:70px;
+  height: 40px;
+  z-index:99999;
+  opacity:1;
+  position:absolute;
+  top:740px;
+  left:270px;
+  background-color: red;
+}
+
+.thumbnail {
+  z-index: 9999;
+  position: absolute;
+  top: 520px;
+  left: 10px;
+  width: 80px;
+}

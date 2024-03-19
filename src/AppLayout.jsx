@@ -4,7 +4,7 @@ import MyDiv from './MyDiv';
 import VideoCapture from './VideoCapture';
 import tallImage from './images/vaka_stream_chat.webm';
 import rightColumn from './images/vaka_stream_overlay.webm';
-import './App.css';
+
 import React, { useState } from 'react';
 
 
@@ -37,7 +37,7 @@ const AppLayout = ({ children }) => {
           {children}
           <MyDiv />
         </div>
-        <div className='bottom-row'>hej</div>
+        <div className='bottom-row'> </div>
 
       </div>
     </div>

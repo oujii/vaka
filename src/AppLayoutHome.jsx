@@ -5,7 +5,6 @@ import FeedEntry from './FeedEntry';
 import VideoCapture from './VideoCapture';
 import feedTop from './images/feedTop.png';
 import rightColumn from './images/vaka_stream_overlay.webm';
-import './App.css';
 import React, { useState } from 'react';
 import pic1 from './images/profilepic.png';
 import pic1entry from './images/entry.png';
@@ -34,6 +33,7 @@ const AppLayout = ({ children }) => {
   const shuffledFeedEntries = shuffle(feedEntries);
   const location = useLocation();
   const [videoUrl, setVideoUrl] = useState(location.state ? location.state.videoUrl : '');
+  const [photoUrl, setPhotoUrl] = useState(location.state ? location.state.photoUrl : '');
   const comment = location.state ? location.state.comment : '';
   const timestamp = new Date().getTime();
   const filename = `video_${timestamp}.mp4`;
@@ -70,10 +70,13 @@ const AppLayout = ({ children }) => {
 
         </div>
 
-        {videoUrl &&
+        {videoUrl ? (
           <a href={videoUrl} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
             <FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={videoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
-          </a>
+          </a>) : (photoUrl ? (
+                      <FeedEntry userpic="hej.jpg" username="mufflan" entryText={comment} timestamp="4 min" entry={photoUrl} likes="antrl32 och 1453 andra gillar detta" usercomment="frida" comment="finis" numbercomments="34" />
+
+        ) : (null))
         }
 
         {/* Render the shuffled feed entries */}

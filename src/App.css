@@ -100,10 +100,10 @@
 @media (max-width: 624px) {
   
   .column2 {
-    display:none;
+    min-width:100vw;
   }
   .column1 {
-    width:100vw;
+    display:none;
   }
 
 }
@@ -230,6 +230,17 @@ opacity:0;
   left:240px;
   background-color: red;
 }
+
+.photo {
+  width:70px;
+  height: 40px;
+  z-index:99999;
+  opacity:1;
+  position:absolute;
+  top:550px;
+  left:210px;
+  background-color: red;
+}
 .stream {
   width:60px;
   height: 40px;
@@ -283,3 +294,8 @@ opacity:0;
   text-decoration: none; /* Remove underline */
   cursor: pointer; /* Change cursor to indicate it's clickable */
 }
+
+a {
+  text-decoration: none;
+}
+

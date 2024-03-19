@@ -41,7 +41,14 @@ return (
   </div>
 )
 function isImage(entry) {
-  return typeof entry === 'string' && entry.match(/\.(jpeg|jpg|gif|png)$/) != null;
+  // Check if entry is a string and starts with the base64 prefix for PNG images
+  const isBase64Image = typeof entry === 'string' && entry.startsWith('data:image/png;base64,');
+  
+  // Check if entry is a string and ends with one of the specified image file extensions
+  const isFileExtensionImage = typeof entry === 'string' && entry.match(/\.(jpeg|jpg|gif|png)$/) != null;
+
+  // Return true if entry is either a base64 encoded image or an image with a file extension
+  return isBase64Image || isFileExtensionImage;
 }
 }
 

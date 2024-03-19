@@ -6,9 +6,10 @@ import BackPhoto from './BackPhoto';
 import VideoCaptureSelfie from './VideoCaptureSelfie';
 import VideoRec from './VideoRec';
 import AppLayout from './AppLayout';
-import './App.css';
 import AppLayoutHome from './AppLayoutHome';
 import Camura from './Camura';
+import Browsephotos from './Browsephotos';
+import Photocam from './Photocam';
 import PinchToZoom from './PinchToZoom';
 import MyPageLayout from './MyPageLayout';
 import ScenerIndex from './ScenerIndex';
@@ -24,6 +25,8 @@ function App() {
         <Route path="/" element={<AppLayoutHome><Home /></AppLayoutHome>} />
         <Route path="/livestream" element={<AppLayout><Home /></AppLayout>} />
         <Route path="/camura" element={<MyPageLayout><Camura /></MyPageLayout>} />
+        <Route path="/photocam" element={<MyPageLayout><Photocam /></MyPageLayout>} />
+        <Route path="/photos" element={<Browsephotos />} />
 
       </Routes>
     </BrowserRouter>
@@ -31,12 +34,7 @@ function App() {
 }
 
 const Home = () => {
-  return (
-    <div>
-      <h1>Welcome to the Home Page</h1>
-      <Link to="/mypage">Go to My Page</Link>
-    </div>
-  );
+ 
 }
 
 export default App;
