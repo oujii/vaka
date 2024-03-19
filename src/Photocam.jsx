@@ -198,7 +198,7 @@ const VideoRecorder = () => {
       
       
       <a onClick={toggleFullscreen}><div className='fullscreen'></div></a>
-      <Link to={'/camura'}><div className='video-roll'></div></Link>
+      <Link to={'/livestream'}><div className='video-roll'></div></Link>
       <a onClick={flipCam}>
   <div className='flipcam' style={{display:'hidden'}}></div>
 </a>
@@ -206,7 +206,7 @@ const VideoRecorder = () => {
   <div className='refresh'></div> 
 </a>
 
-      <Link to={'/livestream'}><div className='stream'></div></Link>
+      <Link to={'/camura'}><div className='stream'></div></Link>
       <input type="file" id="laddaupp" className='upload' accept="image/*" onChange={handleFileInputChange} />
       <Link to={'/'}>
       <div className='goback'></div></Link>

@@ -21,12 +21,12 @@
 
 .video-roll {
 
-  width:70px;
+    width:70px;
   height: 40px;
   z-index:99999;
   opacity:0.1;
   position:absolute;
   top:470px;
-  left:290px;
+  left:210px;
   background-color: red;
 }
