@@ -9,6 +9,7 @@ import pickPhotoAction from './images/pick-photo-action.png';
 const PhotosComponent = () => {
   const location = useLocation();
   const savedPhotos = location.state.savedPhotos; // Access savedPhotos from location state
+  const facingDir = location.state.facingDir; // Access savedPhotos from location state
   const [selectedPhoto, setSelectedPhoto] = useState(null);
   const navigate = useNavigate();
 
@@ -37,7 +38,7 @@ const PhotosComponent = () => {
       <SwipeableViews enableMouseEvents>
         {savedPhotos.map((photoUrl, index) => (
           <div key={index} style={{ position: 'relative'}}>
-            <img className='mirror' style={{ maxWidth: "100vw", paddingTop: '50%' }} src={photoUrl} alt={`Photo ${index}`} />
+            <img className={`${facingDir === 'user' ? 'mirror' : ''}`} style={{ maxWidth: "100vw", paddingTop: '50%' }} src={photoUrl} alt={`Photo ${index}`} />
             <a
                 
               onClick={() => handleSelectPhoto(photoUrl)}

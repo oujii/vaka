@@ -173,7 +173,7 @@ const VideoRecorder = () => {
 
   
   const browsePhotos = () => {
-    navigate('/photos', {state: {savedPhotos}});
+    navigate('/photos', {state: {savedPhotos, facingDir}});
   }
 
   return (
