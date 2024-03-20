@@ -21,6 +21,18 @@
   border: 2px solid white;
 }
 
+.thumbnail-reverse {
+  z-index: 9999;
+  position: absolute;
+  top: 430px;
+  left: 10px;
+  width: 80px;
+  /* Flip horizontally */
+  border-radius: 20%;
+  border: 2px solid white;
+}
+
+
 
 .video-roll {
 

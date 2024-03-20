@@ -189,7 +189,7 @@ const VideoRecorder = () => {
       />
 
 {!capturedPhotoUrl && photoUrl && (
-  <img className='thumbnail' onClick={browsePhotos} src={photoUrl} alt="Captured Photo" />
+  <img className={`${facingDir === 'user' ? 'thumbnail' : 'thumbnail-reverse'}`}  onClick={browsePhotos} src={photoUrl} alt="Captured Photo" />
 )}
         {capturedPhotoUrl || imageAdded ? (<img id="main__video-record" className='attached-pic' style={{marginTop: '10vh'}} src={imageAdded ? imageUrl: photoUrl} />) : (
           
