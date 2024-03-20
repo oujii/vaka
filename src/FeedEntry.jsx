@@ -3,10 +3,15 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import MyPage from './MyPage';
 import interact from './images/interact.png';
+import facingDir from 'AppLayoutHome';
 
 
-function FeedEntry({ userpic, username, entryText, entry, likes, comment, numbercomments, usercomment, timestamp }) {
-return (
+
+function FeedEntry({ userpic, username, entryText, entry, likes, comment, numbercomments, usercomment, timestamp, facingDir }) {
+
+  const mirrorName = facingDir === 'user' ? 'mirror' : '';
+
+  return (
   <div className='feedentry' style={{backgroundColor: 'black', color:'white', paddingBottom:'35px'}}>
     
 <div style={{ display: 'flex', paddingTop: '10px', paddingBottom: '10px', width: '100vw', backgroundColor: 'black', alignItems: 'center', justifyContent: 'space-between'}}>
@@ -17,9 +22,9 @@ return (
 
 
 {isImage(entry) ? (
-        <img style={{ maxWidth: '100%', paddingBottom: '5px' }} className='mirror' src={entry} />
+        <img style={{ maxWidth: '100%', paddingBottom: '5px' }} src={entry} />
       ) : (
-        <video style={{ maxWidth: '100%', paddingBottom: '5px' }} loop autoPlay>
+        <video style={{ maxWidth: '100%', paddingBottom: '5px' }} className={mirrorName} loop autoPlay>
           <source src={entry} type="video/mp4" />
           Your browser does not support the video tag.
         </video>

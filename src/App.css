@@ -300,7 +300,7 @@ a {
   text-decoration: none;
 }
 
-.mirror video {
+.mirror {
   transform: scaleX(-1); /* Flip horizontally */
 
 }

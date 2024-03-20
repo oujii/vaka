@@ -39,7 +39,7 @@
 
 }
 
-.mirror video {
+.mirror {
   transform: scaleX(-1); /* Flip horizontally */
 
 }

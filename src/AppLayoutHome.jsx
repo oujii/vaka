@@ -44,7 +44,7 @@ const AppLayout = ({ children }) => {
   const [isFullscreen, setIsFullscreen] = useState(false);
 
   console.log(facingDir);
-  
+
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -79,7 +79,7 @@ const AppLayout = ({ children }) => {
 
         {videoUrl ? (
           <a href={videoUrl} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
-          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" className={facingDir === 'user' ? 'mirror' : ''}/>
+          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" facingDir={facingDir}/>
 
           </a>) : (photoUrl ? (
                       <a href={photoUrl} download={filenamePhoto} onClick={() => {localStorage.clear(); setPhotoUrl('');}}><FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={photoUrl} likes="3 personer gillar detta" usercomment="" comment="" numbercomments="" /></a>
