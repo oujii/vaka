@@ -38,3 +38,8 @@
   max-width:120vw;
 
 }
+
+.mirror {
+  transform: scaleX(-1); /* Flip horizontally */
+
+}
