@@ -47,9 +47,9 @@ const AppLayout = ({ children }) => {
   useEffect(() => {
     // Array containing file paths or URLs of 10 similar photos
     const feedTopImages = [
-      './images/events/story1.png',
-      './images/events/story2.png',
-      './images/events/story3.png',
+      './events/story1.png',
+      './events/story2.png',
+      './events/story3.png',
       // Add paths for the other images here
     ];
 
