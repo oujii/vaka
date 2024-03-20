@@ -50,6 +50,12 @@
   max-width:120vw;
 
 }
+.attached-pic {
+  max-width:120vw;
+  transform: scaleX(-1); /* Flip horizontally */
+
+
+}
 
 .mirror {
   transform: scaleX(-1); /* Flip horizontally */
