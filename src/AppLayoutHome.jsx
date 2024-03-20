@@ -42,6 +42,9 @@ const AppLayout = ({ children }) => {
   const filename = `video_${timestamp}.mp4`;
   const filenamePhoto = `photo_${timestamp}.jpg`;
   const [isFullscreen, setIsFullscreen] = useState(false);
+
+  console.log(facingDir);
+  
   function toggleFullscreen() {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
