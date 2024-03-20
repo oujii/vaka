@@ -48,11 +48,11 @@
 
 .attached-pic-reverse {
   max-width:120vw;
+  transform: scaleX(-1); /* Flip horizontally */
 
 }
 .attached-pic {
   max-width:120vw;
-  transform: scaleX(-1); /* Flip horizontally */
 
 
 }
