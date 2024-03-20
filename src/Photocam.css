@@ -50,7 +50,7 @@
   max-width:120vw;
 
 }
-.attached-pic {
+.attached-pic-reverse {
   max-width:120vw;
   transform: scaleX(-1); /* Flip horizontally */
 
