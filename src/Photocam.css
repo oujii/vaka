@@ -46,11 +46,11 @@
   background-color: red;
 }
 
-.attached-pic {
+.attached-pic-reverse {
   max-width:120vw;
 
 }
-.attached-pic-reverse {
+.attached-pic {
   max-width:120vw;
   transform: scaleX(-1); /* Flip horizontally */
 
