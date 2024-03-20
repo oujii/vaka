@@ -42,6 +42,26 @@ const AppLayout = ({ children }) => {
   const filename = `video_${timestamp}.mp4`;
   const filenamePhoto = `photo_${timestamp}.jpg`;
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [randomFeedTop, setRandomFeedTop] = useState('');
+
+  useEffect(() => {
+    // Array containing file paths or URLs of 10 similar photos
+    const feedTopImages = [
+      './images/events/story1.png',
+      './images/events/story2.png',
+      './images/events/story3.png',
+      // Add paths for the other images here
+    ];
+
+    // Function to select a random photo from the array
+    const getRandomFeedTop = () => {
+      const randomIndex = Math.floor(Math.random() * feedTopImages.length);
+      return feedTopImages[randomIndex];
+    };
+    setRandomFeedTop(getRandomFeedTop());
+
+  }, []); // Empty dependency array to run only once when component mounts
+    
 
   console.log(facingDir);
 
@@ -72,7 +92,7 @@ const AppLayout = ({ children }) => {
         }}>
 
           <a onClick={toggleFullscreen}>
-            <img src={feedTop} style={{ maxWidth: '100vw' }} />
+            <img src={randomFeedTop} style={{ maxWidth: '100vw' }} />
           </a>
 
         </div>
