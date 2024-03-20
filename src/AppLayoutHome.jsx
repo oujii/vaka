@@ -75,8 +75,9 @@ const AppLayout = ({ children }) => {
         </div>
 
         {videoUrl ? (
-          <a href={videoUrl} style={facingDir === 'user' ? 'mirror' : ''} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
-          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" />
+          <a href={videoUrl} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
+          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" className={facingDir === 'user' ? 'mirror' : ''}/>
+
           </a>) : (photoUrl ? (
                       <a href={photoUrl} download={filenamePhoto} onClick={() => {localStorage.clear(); setPhotoUrl('');}}><FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={photoUrl} likes="3 personer gillar detta" usercomment="" comment="" numbercomments="" /></a>
 
