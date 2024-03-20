@@ -5,7 +5,7 @@ import FeedEntry from './FeedEntry';
 import VideoCapture from './VideoCapture';
 import feedTop from './images/feedTop.png';
 import rightColumn from './images/vaka_stream_overlay.webm';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import pic1 from './images/profilepic.png';
 import pic1entry from './images/entry.png';
 import newPost from './images/new-post.png';
