@@ -3,8 +3,6 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import MyPage from './MyPage';
 import interact from './images/interact.png';
-import facingDir from 'AppLayoutHome';
-
 
 
 function FeedEntry({ userpic, username, entryText, entry, likes, comment, numbercomments, usercomment, timestamp, facingDir }) {
