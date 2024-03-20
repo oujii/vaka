@@ -300,10 +300,12 @@ a {
   text-decoration: none;
 }
 
-.mirror {
+.mirror video {
   transform: scaleX(-1); /* Flip horizontally */
 
 }
+
+
 
 .pickphoto-overlay {
   position: absolute;
