@@ -2,10 +2,9 @@
 
 import MyDiv from './MyDiv';
 import VideoCapture from './VideoCapture';
-import tallImage from './images/vaka_stream_chat.webm';
+import tallImage from './images/420-livestreamcomments.webm';
 import rightColumn from './images/vaka_stream_overlay.webm';
 import { useNavigate, Link } from 'react-router-dom';
-import './App.css';
 
 
 
@@ -31,19 +30,19 @@ const AppLayout = ({ children }) => {
     }
 
     const nextStream = () => {
-      navigate('/livestream2');  
+      navigate('/livestream');  
     } 
-    
+
     const stopStream = () => {
       navigate('/stoppedlivestream');  
     } 
     
 
+
  
    
   return (
     <div className='wrapper'>
-    
       <div className="container">
       <a onClick={toggleFullscreen}>
         <div className="column1">
@@ -58,10 +57,8 @@ const AppLayout = ({ children }) => {
           <MyDiv />
         </div>
         <div className='bottom-row'> </div>
-        <a onClick={nextStream}><div className='toggleStream'> </div></a>
+        <a onClick={nextStream}><div className='toggleStream'></div></a>
         <a onClick={stopStream}><div className='stopStream'></div></a>
-
-       
 
 
       </div>

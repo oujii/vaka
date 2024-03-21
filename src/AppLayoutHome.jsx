@@ -28,8 +28,19 @@ const AppLayout = ({ children }) => {
 
   const feedEntries = [
     { userpic: pic1, username: "bajs", entryText: "mitt inlägg 1", timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
-    { userpic: pic1, username: "wall", entryText: <Link to="/scener" className="link-style">mitt inlägg 2</Link>, timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
-    { userpic: pic1, username: "gunnnar", entryText: <Link to="/scener" className="link-style">mitt inlägg 2</Link>, timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
+    { userpic: pic1, username: "wall", entryText: 'mitt inlägg 22', timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
+    { userpic: pic1, username: "gunnnar", entryText: 'mitt inlägg', timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
+    { 
+      userpic: pic1, 
+      username: "kalle_j", 
+      entryText: "Träning är bästa medicinen 💪", 
+      timestamp: "2 timmar sedan", 
+      entry: './feed/entry.png',
+      likes: "sara87 och 76 andra gillar detta", 
+      usercomment: "emma02", 
+      comment: "Håller med! Alltid skönt efteråt.", 
+      numbercomments: "8" 
+    },
     // Add more variations of FeedEntry here
   ];
   const shuffledFeedEntries = shuffle(feedEntries);
@@ -43,6 +54,10 @@ const AppLayout = ({ children }) => {
   const filenamePhoto = `photo_${timestamp}.jpg`;
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [randomFeedTop, setRandomFeedTop] = useState('');
+  const [likes, setLikes] = useState(0); // Initial likes count
+  const [likeText, setLikeText] = useState(""); // Initial like text
+  const likeTextArray = ["Love this!", "Great content!", "Awesome!", "Fantastic!"];
+
 
   useEffect(() => {
     // Array containing file paths or URLs of 10 similar photos
@@ -50,6 +65,13 @@ const AppLayout = ({ children }) => {
       './events/story1.png',
       './events/story2.png',
       './events/story3.png',
+      './events/story4.png',
+      './events/story5.png',
+      './events/story6.png',
+      './events/story7.png',
+      './events/story8.png',
+      './events/story9.png',
+      './events/story10.png',
       // Add paths for the other images here
     ];
 
@@ -77,6 +99,20 @@ const AppLayout = ({ children }) => {
     }
   }
 
+  const updateLikes = () => {
+    // Update likes count randomly or based on some logic
+    const newLikes = Math.floor(Math.random() * 100); // Example: Random likes count
+    setLikes(newLikes);
+
+    // Update like text from array
+    const randomIndex = Math.floor(Math.random() * likeTextArray.length);
+    setLikeText(likeTextArray[randomIndex]);
+
+    
+  };
+
+
+
   return (
     <div className='wrapper'>
 
@@ -92,14 +128,15 @@ const AppLayout = ({ children }) => {
         }}>
 
           <a onClick={toggleFullscreen}>
-            <img src={randomFeedTop} style={{ maxWidth: '100vw' }} />
+            <img src={randomFeedTop} style={{ maxWidth: '100vw'}} />
           </a>
 
         </div>
 
         {videoUrl ? (
           <a href={videoUrl} download={filename} onClick={() => {localStorage.clear(); setVideoUrl('');}}>
-          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes="2 personer gillar detta" usercomment="" comment="" numbercomments="" facingDir={facingDir}/>
+          <FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={videoUrl} likes={`${likes} personer gillar detta`} usercomment="" comment={likeText} numbercomments="" facingDir={facingDir}/>
+
 
           </a>) : (photoUrl ? (
                       <a href={photoUrl} download={filenamePhoto} onClick={() => {localStorage.clear(); setPhotoUrl('');}}><FeedEntry userpic={profilePic} username="EverLastingLinda" entryText={comment} timestamp="Nu" entry={photoUrl} likes="3 personer gillar detta" usercomment="" comment="" numbercomments="" /></a>

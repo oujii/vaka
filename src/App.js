@@ -6,6 +6,8 @@ import BackPhoto from './BackPhoto';
 import VideoCaptureSelfie from './VideoCaptureSelfie';
 import VideoRec from './VideoRec';
 import AppLayout from './AppLayout';
+import AppLayout2 from './AppLayout2';
+import AppLayout3 from './AppLayout3';
 import AppLayoutHome from './AppLayoutHome';
 import Camura from './Camura';
 import Browsephotos from './Browsephotos';
@@ -24,6 +26,8 @@ function App() {
       <Routes>
         <Route path="/" element={<AppLayoutHome><Home /></AppLayoutHome>} />
         <Route path="/livestream" element={<AppLayout><Home /></AppLayout>} />
+        <Route path="/livestream2" element={<AppLayout2><Home /></AppLayout2>} />
+        <Route path="/stoppedlivestream" element={<AppLayout3><Home /></AppLayout3>} />
         <Route path="/camura" element={<MyPageLayout><Camura /></MyPageLayout>} />
         <Route path="/photocam" element={<MyPageLayout><Photocam /></MyPageLayout>} />
         <Route path="/photos" element={<Browsephotos />} />

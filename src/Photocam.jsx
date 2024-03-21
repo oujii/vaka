@@ -40,10 +40,12 @@ const VideoRecorder = () => {
 
   const refreshPage = () => {
 
+    localStorage.clear();
     setPhotoUrl(null);
     setImageUrl(null);
     setImageAdded(false);
     init();
+ 
   
   }
 
@@ -161,14 +163,37 @@ const VideoRecorder = () => {
   const handleCommentChange = (event) => {
     setComment(event.target.value); // Update the textarea content
   }
-    const isLinktoPost = () => {
+  const isLinktoPost = () => {
     if (imageAdded) {
-      const photoUrl = imageUrl;
-      navigate('/', { state: { photoUrl, comment } });
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+  
+      img.onload = () => {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        
+        // Convert canvas content to base64
+        const base64String = canvas.toDataURL('image/png');
+        
+        setPhotoUrl(base64String);
+        console.log("är den base64?");
+        console.log(base64String);
+        navigate('/', { state: { photoUrl: base64String, comment } });
+      };
+  
+      img.src = imageUrl;
     } else {
+      console.log("här kommer riktiga");
+      console.log(photoUrl);
       navigate('/', { state: { photoUrl, comment } });
     }
   }
+  
+  
+  
+  
 
 
   
