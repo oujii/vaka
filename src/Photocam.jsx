@@ -28,6 +28,7 @@ const VideoRecorder = () => {
   const [imageAdded, setImageAdded] = useState(null); // State variable to hold the photo URL
   const canvasRef = useRef(null); // Create a ref for the canvas element
   const [savedPhotos, setSavedPhotos] = useState([]); // State variable to store saved photos
+  const [showOverlay, setShowOverlay] = useState(false); // State variable to control overlay display
 
   const location = useLocation();
   const capturedPhotoUrl = location.state?.photoUrl; // Access photoUrl from location state
@@ -148,7 +149,13 @@ const VideoRecorder = () => {
     canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
     const photoUrl = canvas.toDataURL('image/png');
     
-    setPhotoUrl(photoUrl);
+    setShowOverlay(true); // Show the overlay
+    setTimeout(() => {
+      setShowOverlay(false); // Hide the overlay after a short delay
+      setPhotoUrl(photoUrl); // Proceed with capturing the photo
+    }, 100); // Adjust the delay as needed for the desired effect
+
+    
     // Use photoUrl as needed (e.g., display in an image element, upload to server)
 
       // Add the last taken photo URL to the array of saved photos
@@ -271,6 +278,7 @@ const VideoRecorder = () => {
           transformOrigin: 'center', // Ensure rotation is around the center
       }}
       />
+      {showOverlay && <div className="photo-overlay"></div>}
       {!capturedPhotoUrl && !imageUrl ? (
         <img className='bottom-rec-row' src={bottomBar} onClick={capturePhoto} />
       ) : (

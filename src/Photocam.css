@@ -61,3 +61,15 @@
   transform: scaleX(-1); /* Flip horizontally */
 
 }
+
+.photo-overlay-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+  z-index: 1000; /* Ensure it's above other elements */
+  transition: opacity 0.1s ease-out; /* Smooth transition effect */
+  pointer-events: none; /* Allow clicks to pass through */
+}
