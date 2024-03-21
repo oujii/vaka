@@ -10,6 +10,7 @@ import AppLayout2 from './AppLayout2';
 import AppLayout3 from './AppLayout3';
 import AppLayoutHome from './AppLayoutHome';
 import Camura from './Camura';
+import CamuraTest from './CamuraTest';
 import Browsephotos from './Browsephotos';
 import Photocam from './Photocam';
 import PinchToZoom from './PinchToZoom';
@@ -29,6 +30,7 @@ function App() {
         <Route path="/livestream2" element={<AppLayout2><Home /></AppLayout2>} />
         <Route path="/stoppedlivestream" element={<AppLayout3><Home /></AppLayout3>} />
         <Route path="/camura" element={<MyPageLayout><Camura /></MyPageLayout>} />
+        <Route path="/camuratest" element={<MyPageLayout><CamuraTest /></MyPageLayout>} />
         <Route path="/photocam" element={<MyPageLayout><Photocam /></MyPageLayout>} />
         <Route path="/photos" element={<Browsephotos />} />
 

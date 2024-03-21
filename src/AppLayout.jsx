@@ -59,7 +59,7 @@ const AppLayout = ({ children }) => {
         </div>
         <div className='bottom-row'> </div>
         <a onClick={nextStream}><div className='toggleStream'> </div></a>
-        <a onClick={stopStream}><div className='stopStream'></div></a>
+
 
        
 
