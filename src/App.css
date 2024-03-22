@@ -246,11 +246,16 @@ opacity:0.01;
 
 .comment-video:focus {
   outline:none;
-  bottom:110px;
+  bottom:120px;
+
+  background-color:black;
   z-index:900;
   padding:10px;
-  margin-left:0px;
-
+  padding-top:60px;
+  padding-left:20px;
+  background-image: url("images/record-desc-input.png");
+  background-size: contain; 
+  background-repeat: no-repeat; /* Prevents the background image from repeating */
 
 }
 

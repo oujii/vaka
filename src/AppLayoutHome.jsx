@@ -27,20 +27,67 @@ const AppLayout = ({ children }) => {
   
 
   const feedEntries = [
-    { userpic: pic1, username: "bajs", entryText: "mitt inlägg 1", timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
-    { userpic: pic1, username: "wall", entryText: 'mitt inlägg 22', timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
-    { userpic: pic1, username: "gunnnar", entryText: 'mitt inlägg', timestamp: "4 min", entry: pic1entry, likes: "antrl32 och 1453 andra gillar detta", usercomment: "frida", comment: "finis", numbercomments: "34" },
+    { userpic: './feed/profile/thompson_k.png', username: "thompson_k", entryText: "amazing great wall", timestamp: "2 min", entry: './feed/thompson_amazing.png', likes: "antrl32 och 243 andra gillar detta", usercomment: "peaceli1", comment: "i want to go so bad", numbercomments: "4" },
+    { userpic: './feed/profile/xtermvim.png', username: "xtermwin", entryText: 'trying my analogue cam', timestamp: "4 min", entry: './feed/xtermvim_kattspaningar.png', likes: "antrhaxx och 23 andra gillar detta", usercomment: "sanna_hed", comment: "åååå fin katt juu 👌👌👌", numbercomments: "3" },
+    { userpic: './feed/profile/fannybi.png', username: "sladdert3ch", entryText: 'art, piece #2', timestamp: "6 min", entry: './feed/thingy.png', likes: "ouji och 1453 andra gillar detta", usercomment: "malarsalen_official", comment: "otrolig", numbercomments: "34" },
     { 
-      userpic: pic1, 
+      userpic: './feed/profile/silkb0y.png',
+      username: "silkb0y", 
+      entryText: "where my parents met!", 
+      timestamp: "1 timme sedan", 
+      entry: './feed/viln.png',
+      likes: "LilySam och 46 andra gillar detta", 
+      usercomment: "slummerrr", 
+      comment: "so nice. is it Vilnius? are they still together?", 
+      numbercomments: "2" 
+    },
+    { 
+      userpic: './feed/profile/carlvander.png',
       username: "kalle_j", 
-      entryText: "Träning är bästa medicinen 💪", 
+      entryText: "att vandra är magiskt", 
       timestamp: "2 timmar sedan", 
-      entry: './feed/entry.png',
-      likes: "sara87 och 76 andra gillar detta", 
-      usercomment: "emma02", 
-      comment: "Håller med! Alltid skönt efteråt.", 
+      entry: './feed/carlvander_tider.png',
+      likes: "sara_bless och 76 andra gillar detta", 
+      usercomment: "star_e0n", 
+      comment: "Håller med!", 
       numbercomments: "8" 
     },
+    { 
+      userpic: './feed/profile/dilijanmade.png',
+      username: "dilijanmade", 
+      entryText: "A new batch is done!", 
+      timestamp: "6 min", 
+      entry: './feed/dilijanmade_muuums.png',
+      likes: "sunly och 103 andra gillar detta", 
+      usercomment: "slylittle1", 
+      comment: "Looks amaaaaazing....", 
+      numbercomments: "4" 
+    },
+    { 
+      userpic: './feed/profile/getgoatreal.png',
+      username: "getgoalreal", 
+      entryText: "finaste morgonljuset...", 
+      timestamp: "2 min", 
+      entry: './feed/getgoatreal_finaste.png',
+      likes: "manmaN och 10 andra gillar detta", 
+      usercomment: "nova2017", 
+      comment: "om man bara kunde", 
+      numbercomments: "2" 
+    },
+    { 
+      userpic: './feed/profile/soiMelte.png',
+      username: "novasuper2017", 
+      entryText: "i love turkish food...", 
+      timestamp: "9 min", 
+      entry: './feed/soiMelte_menemenmen.png',
+      likes: "ncotne och 97 andra gillar detta", 
+      usercomment: "wendy_sappa", 
+      comment: "yummm", 
+      numbercomments: "2" 
+    },
+
+
+
     // Add more variations of FeedEntry here
   ];
   const shuffledFeedEntries = shuffle(feedEntries);
@@ -112,7 +159,6 @@ const AppLayout = ({ children }) => {
   };
 
 
-
   return (
     <div className='wrapper'>
 
@@ -148,6 +194,7 @@ const AppLayout = ({ children }) => {
         {shuffledFeedEntries.map((entry, index) => (
           <FeedEntry key={index} {...entry} />
         ))} 
+
 
       
         <Link to="/camura" style={{
