@@ -196,7 +196,7 @@ const VideoRecorder = () => {
 </a>
 
       <Link to={'/livestream'}><div className='stream'></div></Link>
-      <input type="file" id="laddaupp" className='upload' accept="video/*" onChange={handleFileInputChange} />
+      <input type="file" id="laddaupp" className='upload' accept="video/*;capture=camcorder" onChange={handleFileInputChange} />
       <Link to={'/'}>
       <div className='goback'></div></Link>
 
